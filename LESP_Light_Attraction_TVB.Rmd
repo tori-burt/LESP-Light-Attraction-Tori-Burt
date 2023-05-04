@@ -5,3 +5,129 @@ date: "2023-05-04"
 output: html_document
 ---
 
+```{r loading packages}
+
+library(lme4) #run lme4 before lmerTest 
+library(lmerTest)
+library(glmmTMB)
+library(tidyverse)
+library(car)
+library(DHARMa)
+library(effects)
+library(ggeffects)
+library(conflicted)
+library(data.table)
+library(effects)
+library(lubridate)
+
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+conflict_prefer("viridis_pal", "viridis")
+conflict_prefer("yday", "lubridate")
+
+```
+
+```{r tailoring data to analysis}
+
+#load data
+load("Data.Rda")
+
+#filter out NA's in wind speed
+data_wind <- filter(data, WindSpeed != "NA")
+
+#change wind direction to categorical
+data_wind$Wind.Direction <- as.numeric(data_wind$Wind.Direction)
+data_wind$WindDirection_10 <- 10*(data_wind$Wind.Direction)
+data_wind$WindDirection_10<- cimis_degrees_to_compass(data_wind$WindDirection_10)
+
+#categorizing wind direction
+
+data_wind$ID <- rownames(data_wind)
+ID <- data_wind$ID
+for(i in 1:length(ID)){
+   data_wind$WindDir_Cat[[i]] <- if(is.na(data_wind$WindDirection_10[[i]])){
+    print(NA) }
+  else if (data_wind$WindDirection_10[[i]] %like% "NNE"){
+  print ("North") }
+   else if(data_wind$WindDirection_10[[i]] %like% "NNW"){
+    print("West")}
+  else if(data_wind$WindDirection_10[[i]] %like% "SSE"){
+    print("South")}
+     else if(data_wind$WindDirection_10[[i]] %like% "SSW"){
+    print("South")}
+   else if(data_wind$WindDirection_10[[i]] %like% "WSW"){
+    print("West")}
+   else if(data_wind$WindDirection_10[[i]] %like% "WNW"){
+    print("West")}
+  else {print("East")}
+}
+data_wind$WindDir_Cat <- unlist(data_wind$WindDir_Cat)
+
+#categorizing wind speed
+data_wind$ID <- rownames(data_wind)
+ID <- data_wind$ID
+for(i in 1:length(ID)){
+   data_wind$WindSp_Cat[[i]] <- if(is.na(data_wind$WindSpeed[[i]])){
+    print(NA) }
+  else if (is.na(data_wind$WindDirection_10[[i]])){
+  print (NA) }
+  else if(data_wind$WindSpeed[[i]] <= 10){
+    print("Light Wind")}
+   else if(data_wind$WindSpeed[[i]] >= 60){
+    print("Medium Wind")}
+  else {print("Strong Wind")}
+}
+data_wind$WindSp_Cat <- unlist(data_wind$WindSp_Cat)
+data_wind$WindSp_Cat <- as.factor(data_wind$WindSp_Cat)
+
+#dropping NA"s from wind speed and direction
+data_wind %>%
+  drop_na(WindDir_Cat) %>%
+  drop_na(WindSp_Cat)
+
+#combining wind speed and direction
+data_wind <- transform(data_wind, WindSp_Dir = paste(WindSp_Cat,WindDir_Cat, sep = " "))
+
+#change WindSp + Direction to factor
+data_wind$WindSp_Dir <- as.factor(data_wind$WindSp_Dir)
+data_wind$WindDir_Cat <- as.factor(data_wind$WindDir_Cat)
+
+#filter for year, observer, select correct columns, and drop NA
+l21_l22 <- data_wind %>%
+  filter(Year != 119 & Year != 120) %>%
+  filter(Database != "CWS Data 2021" | Database != "Darrell's Data 2021" | Lights != "on then off") %>%
+  select(Date, Lights, Lunar, Box, Total_LESP, yDate, Weather, Database, Year, WindSp_Dir, WindSp_Cat, WindDir_Cat) %>%
+  drop_na(Total_LESP, Lights, Year, yDate) 
+
+#creating binary fog variable
+l21_l22$Weather <- gsub("no fog", "", l21_l22$Weather)
+
+#categorizing fog
+ID <- rownames(l21_l22)
+for(i in 1:length(ID)){
+  l21_l22$fog[[i]] <- if(l21_l22$Weather[[i]] %like% "fog"){
+    print("yes") }
+  else if(l21_l22$Weather[[i]] %like% "Fog"){
+    print("yes") }
+  else if(l21_l22$Weather[[i]] %like% "Foggy"){
+    print("yes") }
+  else {print("no")}
+}
+l21_l22$fog <- unlist(l21_l22$fog)
+l21_l22$fog <- as.factor(l21_l22$fog)
+
+#dropping NA in lunar
+l21_l22 <- l21_l22 %>% 
+  drop_na(Lunar)
+
+```
+
+```{r modelling daily morning survey data}
+
+#check outliers
+boxplot(l21_l22$Total_LESP, ylab = "Number of Stranded Birds", xlab = "")
+
+
+
+```
+
