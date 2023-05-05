@@ -94,8 +94,6 @@ data_wind$WindDir_Cat <- as.factor(data_wind$WindDir_Cat)
 
 #filter for year, observer, select correct columns, and drop NA
 l21_l22 <- data_wind %>%
-  filter(Year != 119 & Year != 120) %>%
-  filter(Database != "CWS Data 2021" | Database != "Darrell's Data 2021" | Lights != "on then off") %>%
   select(Date, Lights, Lunar, Box, Total_LESP, yDate, Weather, Database, Year, WindSp_Dir, WindSp_Cat, WindDir_Cat) %>%
   drop_na(Total_LESP, Lights, Year, yDate) 
 
@@ -127,7 +125,101 @@ l21_l22 <- l21_l22 %>%
 #check outliers
 boxplot(l21_l22$Total_LESP, ylab = "Number of Stranded Birds", xlab = "")
 
+#2 outliers
 
+#filter out outliers
+l21_l22outlier <- l21_l22 %>% filter(Total_LESP < 100)
+
+#visualize data
+hist(l21_l22outlier$Total_LESP, breaks = 31)
+
+#lights boxplot
+boxplot(l21_l22$Total_LESP ~ l21_l22$Lights)
+boxplot(l21_l22outlier$Total_LESP ~ l21_l22outlier$Lights)
+
+#check for covariance
+my_vars <- l21_l22outlier[, c("yDate", "Lunar")]
+
+cor(my_vars)
+
+plot(my_vars)
+
+#lightsmod 1
+mod1 <- lm(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year + Box, data = l21_l22)
+
+#testing vif
+vif(mod1)
+
+#box is perfectly correlated with year so remove box
+
+#lights model 1 (without box)
+mod1 <- lm(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22)
+
+#testing vif
+vif(mod1)
+
+#testing assumptions
+plot(mod1)
+
+#assumptions are violated
+
+#lights model 2
+mod2 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22, family = poisson(link = "log"))
+
+assumptions <- simulateResiduals(fittedModel = mod2, plot = TRUE, refit = FALSE)
+
+#assumptions violated
+
+#testing zero inflation
+testZeroInflation(assumptions)
+
+#lights model 3
+mod3 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22, family = poisson(link = "log"), ziformula = ~1)
+
+#test assumptions
+assumptions <- simulateResiduals(fittedModel = mod3, plot = TRUE, refit = FALSE)
+
+#assumptions violated and convergence problem
+
+#lights model 4
+mod4 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22, family = nbinom1(link = "log"), dispformula = ~yDate)
+
+#test assumptions
+testDispersion(mod4)
+simulatedOutput <- simulateResiduals(fittedModel = mod4, plot = TRUE, refit = FALSE)
+
+plotResiduals(form = l21_l22$Lights, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$yDate, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$Lunar, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$WindSp_Dir, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$fog, simulationOutput = simulatedOutput, asFactor = T)
+boxplot(simulatedOutput$scaledResiduals ~ l21_l22$Year)
+
+#results
+Anova(mod4)
+
+summary(mod4)
+
+#lights model 5 excluding outliers
+mod5 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22outlier, family = nbinom1(link = "log"), dispformula = ~yDate)
+
+#test assumptions
+testDispersion(mod5)
+simulatedOutput <- simulateResiduals(fittedModel = mod5, plot = TRUE, refit = FALSE)
+
+plotResiduals(form = l21_l22outlier$Lights, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$yDate, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22outlier$Lunar, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22outlier$WindSp_Dir, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$fog, simulationOutput = simulatedOutput, asFactor = T)
+boxplot(simulatedOutput$scaledResiduals ~ l21_l22outlier$Year)
+
+#results
+Anova(mod5)
+
+summary(mod5)
+
+#inferences do not change, include outliers
 
 ```
 
