@@ -1,0 +1,350 @@
+Location,Date,Lunar,Plant_Lights_on/off,Wharf on/off,"Weather [Fog, Cloud, Rain Clear]",Wind_speed(km/hr),Wind Direction,Number of Boxes,Total_LESP,Alive_LESP,Alive Ad,Alive Juv,Dead_LESP,Dead Ad,Dead juv,Other_Birds,Cats,Gulls,Number_of_Boats,Notes,Observer,Database
+Bay de Verde,4-28-2021,98,off,on,"fog, drizzle, windy",49,19,8,2,2,,,0,,,,,,,LESP flying around,Sherry Green,Sherry's Data 2021
+Bay de Verde,5-3-2021,55,off,on,"fog, strong wind",67,24,8,2,2,,,0,,,,,,,LESP flying around,Sherry Green,Sherry's Data 2021
+Bay de Verde,5-4-2021,44,off,on,"no wind, no fog",57,25,8,1,1,,,0,,,0,,,Several,several boats came in,Sherry Green,Sherry's Data 2021
+Bay de Verde,5-6-2021,24,off,on,"foggy, no wind",36,2,8,,,,,,,,,,,,several flying around,Sherry Green,Sherry's Data 2021
+Bay de Verde,5-7-2021,16,off,on,"foggy, no wind",NA,Missing,8,,,,,,,,,,,,several flying around,Sherry Green,Sherry's Data 2021
+Bay de Verde,5-17-2021,31,off,on,"foggy, no wind",31,4,8,0,0,,,0,,,0,,,,"flying around, none collected, one boat came in before midnight",Sherry Green,Sherry's Data 2021
+Bay de Verde,5-29-2021,89,off,on,,67,27,8,0,0,,,0,,,0,,,,"a few came in on boats, none collected",Sherry Green,Sherry's Data 2021
+Bay de Verde,5-30-2021,80,off,on,"no wind, no fog",38,25,8,12,9,,,0,,,0,,,0,"saw 12, collected 9",Sherry Green,Sherry's Data 2021
+Bay de Verde,5-31-2021,70,off,on,"clear night, no wind",41,25,8,2,2,,,0,,,0,,,,several boats came in,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-6-2021,13,off,on,"windy, clear",68,26,8,5,,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-7-2021,7,off,on,"windy, clear",70,25,8,2,,,,0,,,1,,,1,"1 boat, eagle came in",Sherry Green,Sherry's Data 2021
+Bay de Verde,6-8-2021,3,off,on,"windy, clear",77,24,8,,,,,,,,0,,,0,several flying around,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-16-2021,36,off,on,"windy, foggy",71,16,8,,0,,,0,,,0,,,4,many flying around,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-17-2021,47,off,on,clear,63,24,8,2,2,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-22-2021,96,off,on,"foggy, no wind",50,20,8,,,,,,,,,,,,several flying around,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-24-2021,99,off,on,,46,26,8,1,1,,,0,,,0,,,,at least one boat came in,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-25-2021,100,,on,"no wind, clear",50,26,14,1,1,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-26-2021,97,,on,"foggy, no wind",57,26,14,2,2,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-27-2021,92,,on,"rain, foggy, light winds",65,24,14,0,0,,,0,,,0,,,,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-28-2021,84,,on,"windy, clear",70,26,14,2,2,,,0,,,0,,,,"1 boat arrived at 10:30pm, one bird released, second bird injured so released next day",Sherry Green,Sherry's Data 2021
+Bay de Verde,6-29-2021,75,,on,"clear night, light winds",44,3,14,0,0,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,6-30-2021,65,,on,clear,42,26,14,0,0,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-1-2021,55,,on,"rain, fog, winds",44,7,14,0,0,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-2-2021,45,,on,"rain, foggy",42,5,14,1,1,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-3-2021,35,,on,clear night,NA,Missing,14,0,0,,,0,,,0,,,,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-4-2021,26,off,on,"rain, foggy, wind",45,10,14,1,0,,,1,,,0,,,1,1 boat arrived at 4am,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-5-2021,18,on,on,"clear, windy",49,26,14,0,0,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-6-2021,11,off,on,"clear, windy",70,25,14,2,2,,,0,,,0,,,3,3 boats arrived after dark,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-7-2021,6,off,on,windy,65,24,14,0,0,,,0,,,0,,,,"no boats, not at quinlans",Sherry Green,Sherry's Data 2021
+Bay de Verde,7-8-2021,2,on,on,"clear, no winds",62,25,14,13,13,,,0,,,0,,,1,"1 boat arrived, many more birds flying around",Sherry Green,Sherry's Data 2021
+Bay de Verde,7-9-2021,0,on,on,"clear, light winds",52,19,14,10,10,,,0,,,0,,,3,"many birds flying around, 3 boats arrived after dark",Sherry Green,Sherry's Data 2021
+Bay de Verde,7-10-2021,1,on,on,"foggy, no wind",74,26,14,0,0,,,0,,,0,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-11-2021,3,on,on,"foggy, windy",48,17,14,3,3,,,0,,,0,,,1,1 boat arrived after dark,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-12-2021,8,on,on,,59,28,14,0,0,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-13-2021,14,off,on,"clear, no wind",63,35,14,15,15,,,0,,,0,,,1,1 boat arrived around midnight,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-14-2021,23,off,on,"clear, no wind",56,24,14,2,2,,,0,,,0,,,1,1 boat at around 11:30pm,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-15-2021,33,off,on,"clear, light winds",62,25,14,7,0,,,0,,,0,,,5,5 boats arrived,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-16-2021,44,off,on,"clear, light winds",58,26,14,0,0,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-17-2021,56,on,on,"clear, light winds",56,25,14,0,0,,,0,,,0,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-18-2021,67,on,on,"clear, no wind",37,27,14,3,0,,,0,,,0,,,1,"1 boat arrived at 12am, a few birds flying around",Sherry Green,Sherry's Data 2021
+Bay de Verde,7-19-2021,78,on,on,"clear, light winds",53,20,14,2,0,,,0,,,0,,,,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-20-2021,87,on,on,"rain, fog",60,20,14,8,8,,,0,,,0,,,,1 boat at midnight,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-21-2021,94,off,on,"fog, light winds",43,25,14,0,0,,,0,,,0,,,,"a few birds flying around, 1 boat arrived",Sherry Green,Sherry's Data 2021
+Bay de Verde,7-22-2021,moon does not pass meridian on this day,off,on,"fog, light winds",36,9,14,0,0,,,0,,,0,,,,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,7-23-2021,99,on,on,"fog, light winds",NA,Missing,14,0,0,,,0,,,0,,,,"many birds flying around, 1 boat after dark",Sherry Green,Sherry's Data 2021
+Bay de Verde,7-24-2021,100,on,,,39,25,14,0,0,,,0,,,,,,,"many birds flying around, lots came in with a boat",Sherry Green,Sherry's Data 2021
+Bay de Verde,7-25-2021,98,off,,,39,19,14,0,0,,,0,,,,,,,,Cheryl,Sherry's Data 2021
+Bay de Verde,7-26-2021,94,off,,,39,25,14,0,0,,,0,,,,,,,Sherry away Cheryl will check + check boxes,Cheryl,Sherry's Data 2021
+Bay de Verde,7-27-2021,88,on,,,59,20,14,0,0,,,0,,,,,,,Sherry away Cheryl will check + check boxes,Cheryl,Sherry's Data 2021
+Bay de Verde,7-28-2021,80,on,,,43,21,14,0,0,,,0,,,,,,,Sherry away Cheryl will check + check boxes,Cheryl,Sherry's Data 2021
+Bay de Verde,7-29-2021,71,off,,,55,26,14,0,0,,,0,,,,,,,Sherry away Cheryl will check + check boxes,Cheryl,Sherry's Data 2021
+Bay de Verde,7-30-2021,62,on,,,67,17,14,0,0,,,0,,,,,,,Sherry away Cheryl will check + check boxes,Cheryl,Sherry's Data 2021
+Bay de Verde,7-31-2021,52,off,,,68,24,14,0,0,,,0,,,,,,,Sherry away Cheryl will check + check boxes,Cheryl,Sherry's Data 2021
+Bay de Verde,8-1-2021,42,off,,,59,25,14,0,0,,,0,,,,,,,,Cheryl,Sherry's Data 2021
+Bay de Verde,8-2-2021,33,on,,"very windy, foggy",78,18,14,2,1,,,1,,,,,,0,Many birds flying around.,Cheryl,Sherry's Data 2021
+Bay de Verde,8-3-2021,24,on,,"very windy, clear",72,19,14,4,1,,,3,,,,,,0,Many birds flying around.,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-4-2021,16,off,,"clear, windy",61,27,14,1,1,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-5-2021,9,on,,"windy, clear",50,26,14,13,13,,,13,,,,,,0,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-6-2021,4,off,,"very windy, clear",66,25,14,4,1,,,3,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-7-2021,1,off,,"light winds, clear",65,25,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-8-2021,0,on,,"light winds, clear",51,26,14,4,1,,,3,,,,,,0,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-9-2021,2,off,,"light winds, clear",43,22,14,1,1,,,0,,,,,,,lights were turned on until 10:30 pm due to work on the wharf,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-10-2021,6,on,,"light winds, clear",51,26,14,28,26,,,2,,,,,,0,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-11-2021,12,on,,"light winds, clear",50,25,14,6,5,,,1,,,,,,0,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-12-2021,20,off,on,"light winds, foggy",32,21,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-13-2021,30,off,on,"light winds, clear",45,21,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-14-2021,41,on,on,"foggy, light winds",NA,Missing,14,3,1,,,2,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-15-2021,53,on,on,"foggy, light winds",NA,Missing,14,6,5,,,1,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-16-2021,65,off,on,"foggy, light winds",48,26,14,2,1,,,1,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-17-2021,76,off,on,"light winds, clear",57,25,14,2,2,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-18-2021,85,off,on,"clear, light winds",49,25,14,1,1,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-19-2021,93,off,on,"light winds, clear",67,25,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-20-2021,97,on,on,"windy, foggy, rain, thunder and lightning",52,9,14,6,6,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-21-2021,moon does not pass meridian on this day,off,on,"very windy, foggy",47,2,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-22-2021,100,off,on,"windy, foggy, rain",50,2,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-23-2021,99,on,on,"light winds, drizzle",59,25,14,4,4,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-24-2021,97,on,on,"windy, foggy",63,25,14,6,6,,,0,,,,,,0,"no boats, many birds flying around",Sherry Green,Sherry's Data 2021
+Bay de Verde,8-25-2021,92,on,on,"windy, clear",61,25,14,4,4,,,0,,,,,,1,1 boat arrived at 9:45pm,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-26-2021,85,off,on,very windy,45,19,14,1,1,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-27-2021,77,on,on,"windy, misty",68,20,14,3,3,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-28-2021,68,on,on,"windy, rain",64,2,14,1,1,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-29-2021,59,off,on,"windy, drizzle",61,2,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-30-2021,49,off,on,"light winds, clear",49,34,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,8-31-2021,40,off,on,"foggy, light winds, rain",41,16,14,0,0,,,0,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-1-2021,30,off,,"foggy, rain, light winds",NA,Missing,14,3,3,,,0,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-2-2021,21,on,,"foggy, light winds, drizzle",46,17,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-3-2021,14,on,,"foggy, rain, light winds",70,17,14,5,5,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-4-2021,7,off,,"light winds, foggy",50,24,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-5-2021,3,off,,"clear, light winds",49,1,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-6-2021,0,on,,"very windy, foggy",40,19,14,4,4,,,0,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-7-2021,1,off,,"very windy, foggy",63,19,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-8-2021,4,on,,"very windy, clear",57,25,14,1,1,,,0,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-9-2021,9,on,,"light winds, clear",45,25,14,1,1,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-10-2021,17,off,,"very windy, a lot of rain",137,25,14,10,2,,,8,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-11-2021,27,on,,"very windy, foggy",129,26,14,3,3,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-12-2021,39,on,,"very windy, rain",49,28,14,3,3,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-13-2021,51,off,,"windy, clear",69,25,14,1,1,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-14-2021,62,off,,"windy, rain, foggy",56,35,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-15-2021,73,on,,"very windy, foggy",52,2,14,3,3,,,0,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-16-2021,83,off,,"very windy, foggy",77,22,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-17-2021,90,off,,"very windy, foggy",48,25,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-18-2021,96,off,,"light winds, foggy",59,25,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-19-2021,moon does not pass meridian on this day,on,,"very windy, foggy",89,3,14,3,3,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-20-2021,99,on,,"very windy, rain",96,3,14,1,1,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-21-2021,100,off,,"windy, clear",58,26,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-22-2021,98,on,,"clear, light winds",58,27,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-23-2021,95,on,,,48,4,14,0,0,,,0,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-25-2021,83,off,,"clear, light winds",34,25,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-26-2021,75,on,,"windy,foggy,rain",49,25,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-27-2021,66,off,,"windy, foggy",65,17,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-28-2021,57,on,,"windy, rain, fog",52,25,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-29-2021,47,on,,"foggy, light winds, heavy rain",36,25,14,0,0,,,0,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,9-30-2021,37,off,,"fog, rain, light winds",39,14,14,283,273,,,10,,,,,,1,"Sherry's data confirmed the number was 273, Sabina took the dead birds back with her, many, many birds flying around, 1 boat",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-1-2021,28,off,on,"foggy, rain",NA,Missing,14,17,17,,,0,,,,,,0,"no boats, Taylor and Juliana found about 500",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-2-2021,19,on,on,"clear, light winds",42,26,14,6,6,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-3-2021,11,,,,35,5,,,,,,,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-4-2021,5,,on,,55,33,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-5-2021,1,,on,,63,34,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-6-2021,0,,on,,49,25,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-7-2021,2.2,,on,,44,34,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-8-2021,7,off,on,stormy; high winds,122,2,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-9-2021,15,,on,,114,3,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-10-2021,25,,on,,67,3,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-11-2021,36,,on,,36,34,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-12-2021,47,,on,,49,3,,,,,,0,,,,,,,"no data, Sherry away",Sherry Green,Sherry's Data 2021
+Bay de Verde,10-13-2021,59,on,on,"windy, clear",53,4,14,1,1,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-14-2021,70,off,on,"wind, rain",67,36,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-15-2021,79,off,on,"windy, fog, drizzle",NA,Missing,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-16-2021,87,on,,"very windy, heavy rain",62,2,14,0,0,,,0,,,,,,,said no birds twice and i think it was meant to be no boats.,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-17-2021,93,off,on,"very windy, rain",49,34,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-18-2021,98,off,on,"windy, clear",NA,Missing,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-19-2021,moon does not pass meridian on this day,on,on,"light winds, fog, drizzle",70,15,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-20-2021,100,off,on,"foggy, drizzle",42,30,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-21-2021,100,off,on,"fog, drizzle, light winds",61,31,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-22-2021,98,on,on,"light winds, rain, clear",42,30,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-23-2021,94,on,on,"windy, foggy",56,25,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-24-2021,89,on,on,"very windy, foggy, rain",79,25,14,,,,,0,,,,,,0,no boats (said no boats twice so I think she may have meant 0 birds but unsure),Sherry Green,Sherry's Data 2021
+Bay de Verde,10-25-2021,82,on,on,"very windy, drizzle",77,36,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-26-2021,74,off,on,"light winds, fog",44,33,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-27-2021,64,on,on,"light winds, drizzle, fog",50,5,14,29,29,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-28-2021,55,on,on,"windy, drizzle, fog",52,7,14,11,11,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-29-2021,44,off,on,"very windy, fog",56,5,14,0,0,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-30-2021,34,on,on,"windy, overcast",33,3,14,75,64,,,11,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,10-31-2021,24,off,on,"light winds, fog",52,18,14,11,11,,,0,,,,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-1-2021,15,on,on,"light winds, foggy",63,18,14,1,1,,,0,,,,,,0,"no boats,(Kyle and Julianna found 20 and released them the same night)",Sherry Green,Sherry's Data 2021
+Bay de Verde,11-2-2021,8,on,on,"foggy, windy",44,26,14,4,1,,,3,,,,,,1,1 boat,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-3-2021,3,off,on,"light winds, clear",NA,Missing,14,0,0,,,0,,,0,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-4-2021,0,off,on,"light winds, drizzle",91,25,14,0,0,,,0,,,0,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-5-2021,1,on,on,"windy, rain, snow",48,5,14,4,2,,,2,,,0,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-6-2021,5,off,on,"windy, fog",65,3,14,0,0,,,0,,,0,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-7-2021,12,off,on,light winds,62,30,14,0,0,,,0,,,0,,,0,"lights off when they should have been on, no boats",Sherry Green,Sherry's Data 2021
+Bay de Verde,11-8-2021,21,on,on,"windy, clear",43,28,14,0,0,,,0,,,0,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-9-2021,32,off,on,"windy, clear",46,26,14,0,0,,,0,,,0,,,0,no boats,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-10-2021,43,on,on,,53,30,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-11-2021,54,,on,,90,1,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-12-2021,65,,on,,75,3,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-13-2021,75,,on,,82,19,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-14-2021,83,,on,,73,23,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-15-2021,90,,on,,85,18,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-16-2021,95,,on,,87,25,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-17-2021,99,,on,,73,26,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-18-2021,100,,on,,48,33,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-19-2021,Moon does not pass the meridian on this day,,on,,87,18,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-20-2021,99,,on,,NA,Missing,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-21-2021,97,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-22-2021,93,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-23-2021,87,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-24-2021,80,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-25-2021,71,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-26-2021,62,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-27-2021,51,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-28-2021,41,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-29-2021,30,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,11-30-2021,20,,on,,NA,,14,0,0,,,0,,,,,,,,Sherry Green,Sherry's Data 2021
+Bay de Verde,5-3-2022,8,off,on,,33,36,13,1,1,,,0,,,,,,2,"Boat names: Atlantic Clipper, Lady Warren",Sherry Green,Sherry's Data 2022
+Bay de Verde,5-4-2022,14,off,on,Fog,34,20,17,0,0,,,0,,,,,,0,"Didnt work, Tori and Parker brought out 4 new boxes",Sherry Green,Sherry's Data 2022
+Bay de Verde,5-5-2022,21,on,on,"Light winds, clear",54,25,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-6-2022,30,off,on,"Rain, fog",41,35,17,,,,,,,,,,,1,Boat name: Admirable Tradition,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-7-2022,39,on,on,Fog,37,27,17,,,,,,,,,,,,,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-8-2022,49,off,on,"Light winds, clear",NA,Missing,17,0,0,,,0,,,,,,1,Boat name: Eastern Challenger,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-9-2022,59,on,on,Clear,39,4,17,0,0,,,0,,,,,,1,Boat name: Christopher Bradley,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-10-2022,69,off,on,Clear,57,25,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-11-2022,79,on,on,Clear,67,27,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-12-2022,87,off,on,"Windy, clear",61,25,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-13-2022,94,on,on,,NA,Missing,17,,,,,,,,,,,,,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-14-2022,Moon does not pass the meridian on this day,off,on,,35,8,17,,,,,,,,,,,,,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-15-2022,98,on,on,Clear,44,5,17,2,2,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-16-2022,100,off,on,Clear,38,25,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-17-2022,99,on,on,Clear,72,18,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-18-2022,94,off,on,Clear,93,18,17,0,0,,,0,,,,,,2,"Boat names: Atlantic Crest, August Gale",Sherry Green,Sherry's Data 2022
+Bay de Verde,5-19-2022,86,on,on,"No wind, clear",52,24,17,,,,,,,,,,,,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-20-2022,77,off,on,"No wind, clear",35,26,17,2,0,,,2,,,,,,2,"Boat names: Atlantic Providence, Trinity Belle",Sherry Green,Sherry's Data 2022
+Bay de Verde,5-21-2022,66,on,on,Fog,40,24,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-22-2022,54,off,on,Clear,62,24,17,3,2,,,1,,,,,,2,"Boat names: Random Mist, Nellie C.",Sherry Green,Sherry's Data 2022
+Bay de Verde,5-23-2022,43,on,on,"Windy, rain",74,24,17,1,1,,,0,,,,,,1,Boat name: Weather or knot,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-24-2022,32,off,on,Windy,NA,Missing,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-25-2022,23,on,on,Clear,45,25,17,0,0,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,26-May,14,off,on,"No wind, clear",50,4,17,1,1,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-27-2022,8,on,on,Windy,37,19,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-28-2022,3,off,on,Clear,86,16,17,0,0,,,0,,,,,,1,Boat name: Atlantic Storm,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-29-2022,1,on,on,"Windy, rain",80,16,17,1,1,,,0,,,,,,0,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,5-30-2022,0,off,on,Clear,47,24,17,1,1,,,0,,,,,,0,Boat name: Atlantic Crest,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-1-2022,5,on,on,"Windy, rain",50,2,17,0,0,,,0,,,,,,1,Didnt work,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-2-2022,10,off,on,"Windy, rain",64,3,17,3,3,,,0,,,,,,3,"Boat names: Atlantic Monarch, Matthieu Marie Pier, Nfld Eagle",Sherry Green,Sherry's Data 2022
+Bay de Verde,6-3-2022,16,on,on,"Windy, fog",47,1,17,1,1,,,0,,,,,,2,"Boat names: Eastern Challenger, Ashton + Cody",Sherry Green,Sherry's Data 2022
+Bay de Verde,6-4-2022,24,off,on,,40,32,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-5-2022,33,on,on,,43,32,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-6-2022,43,off,on,,44,26,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-7-2022,53,on,on,"Windy, clear",54,2,17,19,19,,,0,,,,,,3,"Boat names: Jennifer Tyler, Atlantic Clipper, Trinity Clipper. Many birds flying around.",Sherry Green,Sherry's Data 2022
+Bay de Verde,6-8-2022,64,off,on,"Clear, no wind",NA,Missing,17,2,2,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-9-2022,74,on,on,"Rain, no wind",46,19,17,0,0,,,0,,,,,,1,Boat name: Christopher Bradley. Few birds flying around.,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-10-2022,84,off,on,Fog,73,19,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-11-2022,92,on,on,"Fog, rain",67,24,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-12-2022,97,off,on,Clear,48,27,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-13-2022,Moon does not pass meridian on this day,on,on,Clear,44,20,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-14-2022,100,off,on,Foggy,NA,Missing,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-15-2022,99,on,on,Clear,31,4,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-16-2022,95,off,on,Clear,NA,Missing,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-17-2022,89,on,on,Clear,67,18,17,2,2,,,0,,,,,,2,"Boat names: Trinity Clipper, Atlantic Clipper",Sherry Green,Sherry's Data 2022
+Bay de Verde,6-18-2022,80,off,on,"Windy, rain",72,23,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-19-2022,69,on,on,"Clear, no wind",57,21,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-20-2022,58,off,on,"Rain, fog",75,18,17,7,7,,,0,,,,,,1,Boat name: Atlantic Storm. Many birds flying around,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-21-2022,47,on,on,"Rain, fog",36,25,17,0,0,,,0,,,,,,1,Boat name: Pride + Joy,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-22-2022,37,off,on,Fog,46,26,17,4,4,,,0,,,,,,2,"Boat names: Sound Venture, Eastern Challenger",Sherry Green,Sherry's Data 2022
+Bay de Verde,6-23-2022,27,on,on,Fog,50,25,17,1,1,,,0,,,,,,0,Point Lance Predator,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-24-2022,18,off,on,Fog,57,25,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-25-2022,11,on,on,"Rain, fog",61,24,17,2,2,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-26-2022,6,off,on,Foggy,47,26,17,0,0,,,0,,,,,,1,Boat name: Trinity Belle,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-27-2022,2,on,on,"Windy, clear",58,26,17,2,2,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-28-2022,0,off,on,Clear,69,25,17,2,2,,,0,,,,,,1,Boat name: Sco-be-J.,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-29-2022,0,on,on,"Wind, fog",50,25,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,6-30-2022,2,off,on,Clear,35,15,17,0,0,,,0,,,,,,1,Boat name: Atlantic Crest,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-1-2022,6,on,on,Clear,51,17,17,3,3,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-2-2022,12,off,on,Fog,52,22,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-3-2022,19,on,on,"Rain, fog",63,25,17,1,1,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-4-2022,28,off,on,Foggy,56,25,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-5-2022,38,on,on,Clear,60,24,17,0,0,,,0,,,,,,1,Boat name: Joyful Tradition,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-6-2022,48,off,on,"Fain, fog",59,16,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-7-2022,59,on,on,Windy,73,14,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-8-2022,70,off,on,"Clear, no wind",44,18,17,1,1,,,0,,,,,,1,Boat name: Point Lance Predator,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-9-2022,80,on,on,"Clear, no wind",48,25,17,0,0,,,0,,,,,,1,Boat name: Matthieu Marie Pier,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-10-2022,89,off,on,Clear,66,25,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-11-2022,96,on,on,"Windy, clear",54,25,17,0,0,,,0,,,,,,2,"Boat names: OSC Mariner, Point Lance Predator",Sherry Green,Sherry's Data 2022
+Bay de Verde,7-12-2022,Moon does not pass the meridian on this day,,,,55,24,17,,,,,,,,,,,,,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-13-2022,99,,,,55,24,17,,,,,,,,,,,,off,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-14-2022,100,,,,50,18,17,,,,,,,,,,,,off,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-15-2022,97,,,,41,19,17,,,,,,,,,,,,off,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-16-2022,91,,,,54,25,17,,,,,,,,,,,,off,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-17-2022,83,,,,51,18,17,,,,,,,,,,,,off,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-18-2022,73,off,on,"Foggy, no wind",56,25,17,8,8,,,0,,,,,,1,Boat name:,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-19-2022,63,on,on,"Much rain, fog",72,18,17,5,5,,,0,,,,,,1,Boat name: Ashton + Cody. Many birds flying around.,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-20-2022,52,off,on,"Wind, rain",69,24,17,0,0,,,0,,,,,,2,"Boat names: Pride + Joy, OSC Mariner",Sherry Green,Sherry's Data 2022
+Bay de Verde,7-21-2022,42,on,on,"Windy, clear",55,26,17,2,2,,,0,,,,,,2,"Boat names: Atlantic Storm, Matthieu Marie Pier",Sherry Green,Sherry's Data 2022
+Bay de Verde,7-22-2022,32,off,on,Clear,38,25,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-23-2022,23,on,on,Clear,46,25,17,0,0,,,0,,,,,,0,No offloading,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-24-2022,15,off,on,Clear,51,24,17,0,0,,,0,,,,,,1,Boat name: Atlantic Monarch,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-25-2022,9,on,on,"Windy, clear",60,26,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-26-2022,4,off,on,"Foggy, no wind",75,25,17,4,4,,,0,,,,,,1,Boat name: Matthieu Marie Pier II,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-27-2022,1,on,on,"Windy, foggy",48,23,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-28-2022,0,off,on,"Windy, foggy",38,3,17,0,0,,,0,,,,,,1,Boat name: Sco-be-J,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-29-2022,1,on,on,,32,19,17,,,,,,,,,,,,off,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-30-2022,4,off,on,,62,18,17,,,,,,,,,,,,off,Sherry Green,Sherry's Data 2022
+Bay de Verde,7-31-2022,9,on,on,,55,26,17,,,,,,,,,,,,off,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-1-2022,15,off,on,"Windy, clear",44,25,17,0,0,,,0,,,,,,1,Boat name:,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-2-2022,23,on,on,"Clear, light wind",40,25,17,0,0,,,0,,,,,,1,Boat name: Atlantic Venture,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-3-2022,33,off,on,"No wind, clear",54,25,17,,,,,0,,,,,,2,"Boat names: Admirable Tradition, Sco-be-J",Sherry Green,Sherry's Data 2022
+Bay de Verde,8-4-2022,44,on,on,,47,25,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-5-2022,55,off,on,,61,25,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-6-2022,67,on,on,,51,20,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-7-2022,77,off,on,,63,24,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-8-2022,87,on,on,,56,25,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-9-2022,94,on,on,,58,9,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-10-2022,Moon does not pass the meridian on this day,on,on,,56,8,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-11-2022,99,off,on,,31,19,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-12-2022,100,on,on,,42,17,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-13-2022,98,off,on,,NA,Missing,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,8-14-2022,93,on,on,"Light winds, drizzle",50,20,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-2-2022,40,off,on,Foggy,55,20,17,1,1,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-3-2022,52,off,on,Foggy,43,3,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-4-2022,64,off,on,Foggy,NA,Missing,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-5-2022,75,off,on,"Clear, windy",38,6,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-6-2022,85,off,on,Windy,46,5,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-7-2022,92,off,on,Windy,61,2,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-8-2022,Moon does not pass the meridian on this day,off,on,Windy,54,2,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-9-2022,98,off,on,Windy,36,5,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-10-2022,100,off,on,"Very windy, fog, torrential rain",88,6,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-11-2022,99,off,on,"Very windy, fog, torrential rain",89,5,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-12-2022,96,off,on,"Very windy, fog, torrential rain",53,2,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-13-2022,90,off,on,,54,2,17,,,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-14-2022,83,off,on,"Foggy, wind",35,34,17,0,0,,0,0,,,,,,0,Bill,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-15-2022,74,off,on,"Clear, windy",52,25,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-16-2022,65,off,on,Very windy,61,26,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-17-2022,55,off,on,Very windy,59,30,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-18-2022,45,off,on,"Foggy, wind",85,30,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-19-2022,36,on,on,"Windy, clear",50,28,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-20-2022,27,off,on,"Foggy, wind",NA,Missing,17,12,9,,0,3,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-21-2022,19,on,on,"Windy, rain",45,17,17,8,8,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-22-2022,11,off,on,"Fog, windy",84,18,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-23-2022,6,on,on,"Windy, fog",68,17,17,14,4,,0,10,,,,,,1,Boat name: Covenant II,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-24-2022,2,off,on,"Fog, windy",74,17,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-25-2022,0,on,on,Windy,66,25,17,1,1,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-26-2022,1,off,on,"Fog, windy",57,20,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-27-2022,4,on,on,"Fog, rain ,wind",63,20,17,1,1,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-28-2022,9,off,on,Fog,60,19,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-29-2022,17,on,on,"Clear, windy",NA,Missing,17,1,1,,0,0,,,,,,1,Boat name: Covenant II,Sherry Green,Sherry's Data 2022
+Bay de Verde,9-30-2022,26,off,on,"Fog, rain",48,35,17,1,1,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-1-2022,37,off,on,Windy,57,26,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-2-2022,49,on,on,"Windy, fog",44,1,17,1,1,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-3-2022,61,off,on,Windy,38,33,17,3,1,,0,2,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-4-2022,72,on,on,Very windy,66,27,17,3,3,,0,0,,,,,,0,*,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-5-2022,82,off,on,Windy,51,26,17,0,0,,0,0,,,,,,0,"Lights will be off from here on out, work in plant is over",Sherry Green,Sherry's Data 2022
+Bay de Verde,10-6-2022,90,off,on,"Clear, light winds",34,26,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-7-2022,96,off,on,"Foggy, light winds",45,4,17,48,23,,0,25,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-8-2022,Moon does not pass the meridian on this day,off,on,"Foggy, light winds",58,25,17,8,8,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-9-2022,99,off,on,"Clear, light winds",50,25,17,1,1,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-10-2022,100,off,on,Clear,55,28,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-11-2022,98,off,on,Windy,66,26,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-12-2022,94,off,on,Light wind,53,30,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-13-2022,88,off,on,Foggy,36,25,17,0,0,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-14-2022,81,off,on,Foggy,32,26,17,1,1,,0,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-15-2022,72,off,on,,32,27,17,,,,,,,,,,,,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-16-2022,62.8,off,on,Foggy,67,14,17,1,1,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-17-2022,53.2,off,on,Rain and Fog,74,16,17,12,12,,,0,,,,,,0,Carl Hopkins had 23,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-18-2022,43.4,off,on,Foggy,32,8,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-19-2022,33.8,off,on,Foggy,44,16,17,387,362,,,25,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-20-2022,24.7,off,on,Foggy,70,21,17,50,42,,,8,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-21-2022,16.5,off,on,Foggy,43,26,17,5,1,,,4,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-22-2022,9.5,off,on,Windy,49,26,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-23-2022,4.1,off,on,Windy,61,26,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-24-2022,0.9,off,on,Foggy,35,26,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-25-2022,0.1,off,off,Foggy and Windy,47,25,17,3,3,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-26-2022,1.9,off,off,Clear,43,25,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-27-2022,6.6,off,off,Clear,57,24,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-28-2022,13.8,off,off,Windy,52,32,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-29-2022,23.1,off,off,Windy,66,27,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-30-2022,34,off,off,Clear,68,26,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,10-31-2022,45.8,off,off,Clear,63,26,17,1,1,,,0,,,,,,0,,Sherry Green,Sherry's Data 2022
+Bay de Verde,11-01-2022,57.6,off,off,Rain and Fog,42,2,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2023
+Bay de Verde,11-02-2022,68.9,off,off,Windy,70,30,17,1,1,,,0,,,,,,0,,Sherry Green,Sherry's Data 2024
+Bay de Verde,11-03-2022,79,off,off,rain,65,32,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2025
+Bay de Verde,11-04-2022,87.4,off,off,Windy,49,30,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2026
+Bay de Verde,11-05-2022,93.8,off,off,Foggy,70,26,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2027
+Bay de Verde,11-06-2022,98,off,off,Fog and wind,64,25,17,7,7,,,0,,,,,,0,,Sherry Green,Sherry's Data 2028
+Bay de Verde,11-07-2022,99.9,off,off,Rain and wind,68,25,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2029
+Bay de Verde,11-08-2022,Moon does not pass the meridian on this day,off,off,windy,81,29,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2030
+Bay de Verde,11-09-2022,99.5,off,off,,76,33,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2031
+Bay de Verde,11-10-2022,96.9,off,off,,67,25,17,0,0,,,0,,,,,,0,,Sherry Green,Sherry's Data 2032
+Bay de Verde,8-15-2022,86,,,,NA,Missing,17,,,,,,,,,,,,,,
+Bay de Verde,9-1-2022,29,,on,,62,18,17,,,,,,,,,,,,,,
