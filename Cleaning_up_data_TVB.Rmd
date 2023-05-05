@@ -18,16 +18,13 @@ library(anytime)
 ```{r cleaning up data}
 
 #load data
-data <- read.csv("data/Fishplant_2022_Feb_27_2023_SG.csv", na.strings = c("", "NA"))
+data <- read.csv("data/Fishplant_2022_May_4_2023_SG.csv", na.strings = c("", "NA"))
 
 #change column names
 names(data)[names(data) == "Wind_speed.km.hr."] <- "WindSpeed"
 names(data)[names(data) == "Number.of.Boxes"] <- "Box"
 names(data)[names(data) == "Plant_Lights_on.off"] <- "Lights"
 names(data)[names(data) == "Weather..Fog..Cloud..Rain.Clear."] <- "Weather"
-
-#filter out errors
-data <- data[-461:-462, ]
 
 #filter for fishplant workers only
 data <- filter(data, Observer %like% "Sherry Green" | Observer == "Cheryl")
