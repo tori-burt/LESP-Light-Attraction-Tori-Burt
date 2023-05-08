@@ -179,40 +179,40 @@ mod3 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, d
 #test assumptions
 assumptions <- simulateResiduals(fittedModel = mod3, plot = TRUE, refit = FALSE)
 
-#assumptions violated and convergence problem
+#assumptions violated and model convergence problem
 
-#lights model 4
+#lights model 4: best fit
 mod4 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22, family = nbinom1(link = "log"), dispformula = ~yDate)
 
 #test assumptions
 testDispersion(mod4)
 simulatedOutput <- simulateResiduals(fittedModel = mod4, plot = TRUE, refit = FALSE)
-
 plotResiduals(form = l21_l22$Lights, simulationOutput = simulatedOutput, asFactor = T)
 plotResiduals(form = l21_l22$yDate, simulationOutput = simulatedOutput)
 plotResiduals(form = l21_l22$Lunar, simulationOutput = simulatedOutput)
 plotResiduals(form = l21_l22$WindSp_Dir, simulationOutput = simulatedOutput, asFactor = T)
 plotResiduals(form = l21_l22$fog, simulationOutput = simulatedOutput, asFactor = T)
-boxplot(simulatedOutput$scaledResiduals ~ l21_l22$Year)
+plotResiduals(form = l21_l22$Year, simulationOutput = simulatedOutput, asFactor = T)
+
+#assumptions not violated but dispersion significant
 
 #results
 Anova(mod4)
 
 summary(mod4)
 
-#lights model 5 excluding outliers
+#lights model 5: excluding outliers
 mod5 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22outlier, family = nbinom1(link = "log"), dispformula = ~yDate)
 
 #test assumptions
 testDispersion(mod5)
 simulatedOutput <- simulateResiduals(fittedModel = mod5, plot = TRUE, refit = FALSE)
-
-plotResiduals(form = l21_l22outlier$Lights, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$Lights, simulationOutput = simulatedOutput, asFactor = T) #homogeneity of variances significant 
 plotResiduals(form = l21_l22outlier$yDate, simulationOutput = simulatedOutput)
 plotResiduals(form = l21_l22outlier$Lunar, simulationOutput = simulatedOutput)
 plotResiduals(form = l21_l22outlier$WindSp_Dir, simulationOutput = simulatedOutput, asFactor = T)
 plotResiduals(form = l21_l22outlier$fog, simulationOutput = simulatedOutput, asFactor = T)
-boxplot(simulatedOutput$scaledResiduals ~ l21_l22outlier$Year)
+plotResiduals(form = l21_l22outlier$Year, simulationOutput = simulatedOutput, asFactor = T)
 
 #results
 Anova(mod5)

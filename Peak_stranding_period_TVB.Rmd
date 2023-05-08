@@ -1,0 +1,59 @@
+---
+title: "Peak_stranding_period_TVB"
+author: "Tori Burt"
+date: "2023-05-08"
+output: html_document
+---
+
+```{r loading packages}
+
+library(tidyverse)
+library(viridis)
+
+```
+
+```{r tailoring data to analysis}
+
+#load data
+load("Data.Rda")
+
+#selecting necessary columns and dropping NA
+when <- data %>%
+  select(Total_LESP, yDate) %>%
+  drop_na(Total_LESP, yDate) 
+
+```
+
+```{r plotting data}
+
+#finding mean
+mean(when$Total_LESP) #mean is 4.251592
+
+#scatterplot with cut-off line where the mean is doubled
+ggplot(when, aes(y = Total_LESP, x = yDate)) +
+  geom_segment(aes(x = 271, y = 400, xend = 299, yend = 400), colour = 'light grey', linewidth = 1000, alpha = 0.05) +
+  theme(axis.title = element_text(size = 9)) +
+  scale_color_viridis(option = "C", discrete = TRUE) +
+  geom_point(aes()) +
+  geom_smooth(method = NULL, colour = "blue") +
+  xlab("Day of Year") +
+  ylab("Number of Stranded Birds") +
+  geom_hline(yintercept = 8.5, color = "orange", linewidth = 1) +
+  theme(panel.background = element_rect(fill = 'white', colour = 'black')) 
+
+#line of smoothing intersect cut-off line at 271 and 299 = peak stranding period
+
+#final figure
+png(filename = "figures/peak_stranding_period_2021_2022.png", width = 16, height = 10, units = "cm", res = 600)
+ggplot(when, aes(y = Total_LESP, x = yDate)) +
+  geom_segment(aes(x = 271, y = 400, xend = 299, yend = 400), colour = 'light grey', linewidth = 1000, alpha = 0.05) +
+  theme(axis.title = element_text(size = 9)) +
+  scale_color_viridis(option = "C", discrete = TRUE) +
+  geom_point(aes()) +
+  geom_smooth(method = NULL, colour = "blue") +
+  xlab("Day of Year") +
+  ylab("Number of Stranded Birds") +
+  theme(panel.background = element_rect(fill = 'white', colour = 'black'))
+dev.off()
+
+```
