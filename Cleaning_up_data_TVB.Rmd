@@ -28,7 +28,6 @@ data$Date <- anytime(data$Date)
 
 #make columns that just contain year, month, and day of year
 data$Date <- as.POSIXlt(data$Date, format = "%m/%d/%Y")
-
 data$Year <- data$Date$year
 data$Month <- data$Date$mon + 1
 data$Date <- as.POSIXct(data$Date)
@@ -38,15 +37,10 @@ data$Total_LESP <- as.numeric(data$Total_LESP)
 #classify variables 
 data$Lunar <- gsub("moon does not pass meridian on this day", 100, data$Lunar)
 data$Lunar <- as.numeric(data$Lunar)
-
 data$WindSpeed <- as.numeric(data$WindSpeed)
-
 data$yDate <- as.numeric(data$yDate)
-
 data$Box <- as.factor(data$Box)
-
 data$Year <- as.factor(data$Year)
-
 data$Lights <- factor(data$Lights, levels = c("on","off"))
 
 #save the data file

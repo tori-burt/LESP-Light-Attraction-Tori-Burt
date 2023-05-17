@@ -1,4 +1,4 @@
-Date,Time,Plant lights,Wharf lights,Total # of LESP,Total_LESP,# of live adults,# of dead adults,# of live breeding adults,# of dead breeding adults,# of live non breeders,# of dead non breeders,# of live juveniles,# of dead juveniles,Location of birds?,# of gulls,# of cats,"# other predators , please list",Weather Conditions,Lunar,Wind Speed,Wind Direction,# of boats,"Time of boats arrival (24 hr time, please list with comma in between)",Size of vessel (ft) (please list with comma in between),Type of lighting on boats (please list with comma in between and specify ON/OFF),Notes,Ref,Weather Coding
+Date,Time,Plant_lights,Wharf lights,Total_LESP_per_round,Total_LESP_per_night,# of live adults,# of dead adults,# of live breeding adults,# of dead breeding adults,# of live non breeders,# of dead non breeders,# of live juveniles,# of dead juveniles,Location of birds?,# of gulls,# of cats,"# other predators , please list",Weather_Conditions,Lunar,Wind_Speed,Wind_Direction,# of boats,"Time of boats arrival (24 hr time, please list with comma in between)",Size of vessel (ft) (please list with comma in between),Type of lighting on boats (please list with comma in between and specify ON/OFF),Notes,Ref,Weather Coding
 06/25/2021,,Off,On,8,8,6,2,,,,,,,,,,,0,100,50,26,,,,,"Not collected by Tori. Observer was Robert Blackmore, Sydney Collins, and Bill Montevecchi",,Passing clouds = 1
 09/25/2021,,On,On,40,40,15,1,,,,,22,2,,,,,0,83,34,25,,,,,"Not collected by Tori. Observer was Bill Montevecchi, Mohammad Fahmy, and Juliana Coffey",,Broken clouds = 0
 10/01/2021,,Off,On,443,443,,,,,,,,,,,,,6,28,NA,NA,,,,,Not collected by Tori. Observers were Taylor Brown and Juliana Coffey,,
@@ -112,23 +112,23 @@ Wharf",,0,,1,0.7,34,25,0,,,,"No weather data available, chose weather conditions
 09/28/2022,22:31,Off,On,0,0,0,0,0,0,0,0,0,0,NA,13,0,0,"1
 6",9,60,19,0,,,,,,
 09/29/2022,21:20,On,On,0,10,0,0,0,0,0,0,0,0,NA,7,0,0,1,16.6,NA,NA,0,,,,2 flying around when we arrived then dissapeared. Can't tell if it's cloudy or not but no rain. No weather data available so used WC from same night,,
-09/29/2022,23:02,On,On,1,,1,0,,,,,0,0,Front of fish plant,16,1,0,1,16.6,NA,NA,,,,,"No longer distinguishing breeding\nb, no weather data available used WC from same night dif time",,
+09/29/2022,23:02,On,On,1,,1,0,,,,,0,0,Front of fish plant,16,1,0,1,16.6,NA,NA,,,,,"No longer distinguishing breeding\nb, no weather data available used WC from same night dif time (fog and cloud cover)",,
 09/29/2022,1:21,Off,On,0,,0,0,0,0,0,0,0,0,NA,31,0,0,"5
 6",16.6,NA,NA,0,,,,,,
 09/29/2022,0:34,Off,On,0,,0,0,0,0,0,0,0,0,NA,30,0,0,"4
 6",16.6,NA,NA,0,,,,,,
-09/30/2022,3:03,On,On,2,,2,0,2,0,0,0,0,0,Front of fish plant,3,1,0,1,26.1,48,35,0,,,,"No weather data available, used WC from same night dif time",,
+09/30/2022,3:03,On,On,2,,2,0,2,0,0,0,0,0,Front of fish plant,3,1,0,1,26.1,48,35,0,,,,"No weather data available, used WC from same night dif time (fog and cloud cover data)",,
 09/30/2022,0:15,On,On,2,,1,1,,,,,0,0,Front of fish plant,14,0,0,1,26.1,48,35,0,,,,"Saw petrel get taken by gull , live bird was injured but released fine",,
 09/30/2022,2:01,On,On,5,,4,0,3,,,,0,1,"Front of fish plant
-Loading dock",9,0,0,1,26.1,48,35,1,1:39,,LED,"Name of boat was covenant, no petrels seen around it. Dead bird was likely a juvenile but unsure bc it was not obvious, no weather data available, used weather from same night",,
+Loading dock",9,0,0,1,26.1,48,35,1,1:39,,LED,"Name of boat was covenant, no petrels seen around it. Dead bird was likely a juvenile but unsure bc it was not obvious, no weather data available, used weather from same night (fog and cloud cover)",,
 10/14/2022,20:32,Off,On,5,5,0,,,,,,0,3,"Front of fish plant
 Loading dock",2,0,0,1,80.6,32,26,0,,,,"4\5 dead birds found were decapitated, possible mink (S.G. saw a mink earlier this year). No weather data so estimated from St. John's weather",12 am October 15https://www.timeanddate.com/weather/canada/st-johns/historic?month=10&year=2022,
 10/14/2022,23:40,Off,On,0,,0,0,0,0,0,0,0,0,NA,1,0,,1,80.6,32,26,0,,,,No weather data so estimated from st johns weather,12 am October 15https://www.timeanddate.com/weather/canada/st-johns/historic?month=10&year=2022,
 10/15/2022,1:03,Off,On,0,,0,0,0,0,0,0,0,0,NA,8,0,0,1,72.1,32,27,0,,,,No weather data so estimated from st johns weather,12 am October 15 https://www.timeanddate.com/weather/canada/st-johns/historic?month=10&year=2022,
 10/16/2022,4:15,On,On,5,188,0,0,,,,,5,0,Front of fish plant,8,1,0,1,62.8,67,14,0,,,,,,
-10/16/2022,2:03,On,On,170,,115,,,,,,41,,"Front of fish plant
+10/16/2022,2:03,On,On,170,,41,,,,,,115,,"Front of fish plant
 Back of fish plant
-Loading dock",8,4,0,1,62.8,67,14,0,,,,"11 dead but age unknown, 2 alive of unknown age. Many (50-100) hit and flew away. 1 injured lower mandible broken.",,
+Loading dock",8,4,0,1,62.8,67,14,0,,,,"11 dead but age unknown, 2 alive of unknown age. Many (50-100) hit and flew away. 1 injured lower mandible broken, later died of injury",,
 10/16/2022,3:19,On,On,13,,1,,,,,,10,,"Front of fish plant
 Loading dock",7,0,0,1,62.8,67,14,0,,,,"2 dead, decapitated. Not aged",,
 10/19/2022,22:40,Off,On,17,147,,,,,,,17,,NA,,,,1,33.8,44,16,,,,,weather conditions estimated from St. John's weather station,12 am October 20 https://www.timeanddate.com/weather/canada/st-johns/historic?month=10&year=2022,

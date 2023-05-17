@@ -1,0 +1,84 @@
+---
+title: "Cleaning_up_biweekly_survey_TVB"
+author: "Tori Burt"
+date: "2023-05-15"
+output: html_document
+---
+
+```{r loading packages}
+
+library(lme4) #run lme4 before lmerTest 
+library(lmerTest)
+library(glmmTMB)
+library(tidyverse)
+library(car)
+library(DHARMa)
+library(effects)
+library(ggeffects)
+library(conflicted)
+library(data.table)
+library(effects)
+library(lubridate)
+
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+conflict_prefer("yday", "lubridate")
+
+```
+
+```{r tailoring data to analysis}
+
+#load data
+tb1 <- read.csv("data/Fishplant_Rounds_2022_TB.csv") 
+
+#categorize fog conditions
+ID <- rownames(tb1)
+for(i in 1:length(ID)){
+  tb1$Fog_Cat[[i]] <- if(tb1$Weather_Conditions[[i]] %like% "2"){
+    print("Fog") }
+  else if(tb1$Weather_Conditions[[i]] %like% "3"){
+    print("Fog") }
+  else if(tb1$Weather_Conditions[[i]] %like% "6"){
+    print("Fog") }
+  else {print("No fog")}
+}
+tb1$Fog_Cat <- unlist(tb1$Fog_Cat)
+tb1$Fog_Cat <- as.factor(tb1$Fog_Cat)
+
+#categorize cloud cover
+ID <- rownames(tb1)
+for(i in 1:length(ID)){
+  tb1$CloudCover_Cat[[i]] <- if(tb1$Weather_Conditions[[i]] %like% "0"){
+    print("< 50% Cloud Cover") }
+  else if(tb1$Weather_Conditions[[i]] %like% "1"){
+    print("> 50% Cloud Cover") }
+  else {print("NA")}
+}
+tb1$CloudCover_Cat <- unlist(tb1$CloudCover_Cat)
+tb1$CloudCover_Cat <- as.factor(tb1$CloudCover_Cat)
+
+#make columns that just contain year, month, and day of year
+tb1$Date <- as.POSIXlt(tb1$Date, format = "%m/%d/%Y")
+tb1$Year <- tb1$Date$year
+tb1$Month <- tb1$Date$mon + 1
+tb1$Date <- as.POSIXct(tb1$Date)
+tb1$yDate <- yday(tb1$Date)
+
+#classify variables
+tb1$Plant_lights <- as.factor(tb1$Plant_lights)
+tb1$Lunar <- gsub("Moon does not pass the meridan on this day", 100, tb1$Lunar)
+tb1$Lunar <- as.numeric(tb1$Lunar)
+tb1$yDate <- as.numeric(tb1$yDate)
+tb1$CloudCover_Cat <- as.factor(tb1$CloudCover_Cat)
+tb1$Year <- as.factor(tb1$Year)
+
+#select for columns of interest
+tb2 <- select(tb1, Date, Plant_lights, Total_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year) %>%
+  drop_na(Date, Plant_lights, Total_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year)
+
+```
+
+```{r analyzing data}
+
+
+```

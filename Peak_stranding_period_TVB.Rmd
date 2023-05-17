@@ -31,28 +31,43 @@ mean(when$Total_LESP) #mean is 4.251592
 
 #scatterplot with cut-off line where the mean is doubled
 ggplot(when, aes(y = Total_LESP, x = yDate)) +
-  geom_segment(aes(x = 271, y = 400, xend = 299, yend = 400), colour = 'light grey', linewidth = 1000, alpha = 0.05) +
+  annotate("rect", xmin = 268, xmax = 301, ymin = 0, ymax = 419, fill = alpha("grey", 0), colour = "black", linewidth = 0.7) +
   theme(axis.title = element_text(size = 9)) +
   scale_color_viridis(option = "C", discrete = TRUE) +
-  geom_point(aes()) +
-  geom_smooth(method = NULL, colour = "blue") +
+  geom_point(aes(), size = 0.9) +
+  geom_smooth(method = NULL, colour = "blue", linewidth = 0.7) +
   xlab("Day of Year") +
   ylab("Number of Stranded Birds") +
-  geom_hline(yintercept = 8.5, color = "orange", linewidth = 1) +
-  theme(panel.background = element_rect(fill = 'white', colour = 'black')) 
+  coord_cartesian(ylim = c(0,400)) +
+  geom_hline(yintercept = 2*mean(when$Total_LESP), color = "orange", linewidth = 1) +
+  theme(panel.background = element_rect(fill = 'white', colour = 'black'))
 
-#line of smoothing intersect cut-off line at 271 and 299 = peak stranding period
+#scatterplot with cut-off line where the mean is doubled, map cropped to remove 2 outliers (values = 387 and 283) to visualize data
+ggplot(when, aes(y = Total_LESP, x = yDate)) +
+  annotate("rect", xmin = 269, xmax = 301, ymin = 0, ymax = 83.7, fill = alpha("grey", 0), colour = "black", linewidth = 0.7) +
+  theme(axis.title = element_text(size = 9)) +
+  scale_color_viridis(option = "C", discrete = TRUE) +
+  geom_point(aes(), size = 0.9) +
+  geom_smooth(method = NULL, colour = "blue", linewidth = 0.7) +
+  xlab("Day of Year") +
+  ylab("Number of Stranded Birds") +
+  coord_cartesian(ylim = c(0,80)) +
+  geom_hline(yintercept = 2*mean(when$Total_LESP), color = "orange", linewidth = 0.7) +
+  theme(panel.background = element_rect(fill = 'white', colour = 'black'))
+
+#line of smoothing intersect cut-off line at 268 and 301 = peak stranding period
 
 #final figure
 png(filename = "figures/peak_stranding_period_2021_2022.png", width = 16, height = 10, units = "cm", res = 600)
 ggplot(when, aes(y = Total_LESP, x = yDate)) +
-  geom_segment(aes(x = 271, y = 400, xend = 299, yend = 400), colour = 'light grey', linewidth = 1000, alpha = 0.05) +
+  annotate("rect", xmin = 269, xmax = 301, ymin = 0, ymax = 83.7, fill = alpha("grey", 0), colour = "black", linewidth = 0.7) +
   theme(axis.title = element_text(size = 9)) +
   scale_color_viridis(option = "C", discrete = TRUE) +
-  geom_point(aes()) +
-  geom_smooth(method = NULL, colour = "blue") +
+  geom_point(aes(), size = 0.9) +
+  geom_smooth(method = NULL, colour = "blue", linewidth = 0.7) +
   xlab("Day of Year") +
   ylab("Number of Stranded Birds") +
+  coord_cartesian(ylim = c(0,80)) +
   theme(panel.background = element_rect(fill = 'white', colour = 'black'))
 dev.off()
 

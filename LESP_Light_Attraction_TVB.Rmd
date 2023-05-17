@@ -32,70 +32,15 @@ conflict_prefer("yday", "lubridate")
 #load data
 load("Data.Rda")
 
-#filter out NA's in wind speed
-data_wind <- filter(data, WindSpeed != "NA")
-
-#change wind direction to categorical
-data_wind$Wind.Direction <- as.numeric(data_wind$Wind.Direction)
-data_wind$WindDirection_10 <- 10*(data_wind$Wind.Direction)
-data_wind$WindDirection_10<- cimis_degrees_to_compass(data_wind$WindDirection_10)
-
-#categorizing wind direction
-
-data_wind$ID <- rownames(data_wind)
-ID <- data_wind$ID
-for(i in 1:length(ID)){
-   data_wind$WindDir_Cat[[i]] <- if(is.na(data_wind$WindDirection_10[[i]])){
-    print(NA) }
-  else if (data_wind$WindDirection_10[[i]] %like% "NNE"){
-  print ("North") }
-   else if(data_wind$WindDirection_10[[i]] %like% "NNW"){
-    print("West")}
-  else if(data_wind$WindDirection_10[[i]] %like% "SSE"){
-    print("South")}
-     else if(data_wind$WindDirection_10[[i]] %like% "SSW"){
-    print("South")}
-   else if(data_wind$WindDirection_10[[i]] %like% "WSW"){
-    print("West")}
-   else if(data_wind$WindDirection_10[[i]] %like% "WNW"){
-    print("West")}
-  else {print("East")}
-}
-data_wind$WindDir_Cat <- unlist(data_wind$WindDir_Cat)
-
-#categorizing wind speed
-data_wind$ID <- rownames(data_wind)
-ID <- data_wind$ID
-for(i in 1:length(ID)){
-   data_wind$WindSp_Cat[[i]] <- if(is.na(data_wind$WindSpeed[[i]])){
-    print(NA) }
-  else if (is.na(data_wind$WindDirection_10[[i]])){
-  print (NA) }
-  else if(data_wind$WindSpeed[[i]] <= 10){
-    print("Light Wind")}
-   else if(data_wind$WindSpeed[[i]] >= 60){
-    print("Medium Wind")}
-  else {print("Strong Wind")}
-}
-data_wind$WindSp_Cat <- unlist(data_wind$WindSp_Cat)
-data_wind$WindSp_Cat <- as.factor(data_wind$WindSp_Cat)
-
-#dropping NA"s from wind speed and direction
-data_wind %>%
-  drop_na(WindDir_Cat) %>%
-  drop_na(WindSp_Cat)
-
-#combining wind speed and direction
-data_wind <- transform(data_wind, WindSp_Dir = paste(WindSp_Cat,WindDir_Cat, sep = " "))
-
-#change WindSp + Direction to factor
-data_wind$WindSp_Dir <- as.factor(data_wind$WindSp_Dir)
-data_wind$WindDir_Cat <- as.factor(data_wind$WindDir_Cat)
+#categorize wind to onshore and offshore based on tangent to coastline
+data_wind <- filter(data, WindSpeed != "NA") %>%
+  mutate(Wind.Direction = as.numeric(Wind.Direction) * 10) %>%
+  mutate(OnOffShore = ifelse(Wind.Direction < 166, "onshore", ifelse(Wind.Direction > 346, "onshore", "offshore")))
 
 #filter for year, observer, select correct columns, and drop NA
 l21_l22 <- data_wind %>%
-  select(Date, Lights, Lunar, Box, Total_LESP, yDate, Weather, Database, Year, WindSp_Dir, WindSp_Cat, WindDir_Cat) %>%
-  drop_na(Total_LESP, Lights, Year, yDate) 
+  select(Date, Lights, Lunar, Box, Total_LESP, yDate, Weather, Database, Year, WindSpeed, OnOffShore) %>%
+  drop_na(Total_LESP, Lights, Year, yDate, WindSpeed, OnOffShore) 
 
 #creating binary fog variable
 l21_l22$Weather <- gsub("no fog", "", l21_l22$Weather)
@@ -131,95 +76,109 @@ boxplot(l21_l22$Total_LESP, ylab = "Number of Stranded Birds", xlab = "")
 l21_l22outlier <- l21_l22 %>% filter(Total_LESP < 100)
 
 #visualize data
-hist(l21_l22outlier$Total_LESP, breaks = 31)
+hist(l21_l22$Total_LESP, breaks = 31)
 
 #lights boxplot
 boxplot(l21_l22$Total_LESP ~ l21_l22$Lights)
 boxplot(l21_l22outlier$Total_LESP ~ l21_l22outlier$Lights)
 
 #check for covariance
-my_vars <- l21_l22outlier[, c("yDate", "Lunar")]
+my_vars <- l21_l22[, c("yDate", "Lunar", "WindSpeed")]
 
 cor(my_vars)
 
-plot(my_vars)
+plot(my_vars) #date and lunar have a cyclical relationship
 
-#lightsmod 1
-mod1 <- lm(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year + Box, data = l21_l22)
-
-#testing vif
-vif(mod1)
-
-#box is perfectly correlated with year so remove box
-
-#lights model 1 (without box)
-mod1 <- lm(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22)
+#lightsmod1 - linear model - poor fit
+mod1 <- lm(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22)
 
 #testing vif
 vif(mod1)
 
 #testing assumptions
-plot(mod1)
+plot(mod1, ask = FALSE)
 
 #assumptions are violated
 
-#lights model 2
-mod2 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22, family = poisson(link = "log"))
+#lightsmod2 - poisson distribution - poor fit
+mod2 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = poisson(link = "log"))
 
 assumptions <- simulateResiduals(fittedModel = mod2, plot = TRUE, refit = FALSE)
 
 #assumptions violated
 
-#testing zero inflation
+#testing zero inflation - significant 
 testZeroInflation(assumptions)
 
-#lights model 3
-mod3 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22, family = poisson(link = "log"), ziformula = ~1)
+#lightsmod3 - poisson with zero inflation formula - poor fit
+mod3 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = poisson(link = "log"), ziformula = ~1)
 
-#test assumptions
 assumptions <- simulateResiduals(fittedModel = mod3, plot = TRUE, refit = FALSE)
 
-#assumptions violated and model convergence problem
-
-#lights model 4: best fit
-mod4 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22, family = nbinom1(link = "log"), dispformula = ~yDate)
+#lightsmod4 - negative binomial distribution - overdispersed 
+mod4 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = nbinom1(link = "log"))
 
 #test assumptions
-testDispersion(mod4)
-simulatedOutput <- simulateResiduals(fittedModel = mod4, plot = TRUE, refit = FALSE)
+simulatedOutput <- simulateResiduals(fittedModel = mod4, plot = TRUE, refit = FALSE) #overdispersed
+
+#check each variable
 plotResiduals(form = l21_l22$Lights, simulationOutput = simulatedOutput, asFactor = T)
 plotResiduals(form = l21_l22$yDate, simulationOutput = simulatedOutput)
 plotResiduals(form = l21_l22$Lunar, simulationOutput = simulatedOutput)
-plotResiduals(form = l21_l22$WindSp_Dir, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$WindSpeed, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$OnOffShore, simulationOutput = simulatedOutput, asFactor = T)
 plotResiduals(form = l21_l22$fog, simulationOutput = simulatedOutput, asFactor = T)
 plotResiduals(form = l21_l22$Year, simulationOutput = simulatedOutput, asFactor = T)
 
-#assumptions not violated but dispersion significant
+#within-group deviation for fog
 
-#results
-Anova(mod4)
+#check zero inflation - not significant
+testZeroInflation(simulatedOutput)
 
-summary(mod4)
-
-#lights model 5: excluding outliers
-mod5 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSp_Dir + fog + Year, data = l21_l22outlier, family = nbinom1(link = "log"), dispformula = ~yDate)
+#lightsmod5 - negative binomial with dispersion formula - BEST FIT
+mod5 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = nbinom1(link = "log"), dispformula = ~fog)
 
 #test assumptions
+simulatedOutput <- simulateResiduals(fittedModel = mod5, plot = TRUE, refit = FALSE) 
+
+#testing dispersion - significant, p = 0.048
 testDispersion(mod5)
-simulatedOutput <- simulateResiduals(fittedModel = mod5, plot = TRUE, refit = FALSE)
-plotResiduals(form = l21_l22outlier$Lights, simulationOutput = simulatedOutput, asFactor = T) #homogeneity of variances significant 
-plotResiduals(form = l21_l22outlier$yDate, simulationOutput = simulatedOutput)
-plotResiduals(form = l21_l22outlier$Lunar, simulationOutput = simulatedOutput)
-plotResiduals(form = l21_l22outlier$WindSp_Dir, simulationOutput = simulatedOutput, asFactor = T)
-plotResiduals(form = l21_l22outlier$fog, simulationOutput = simulatedOutput, asFactor = T)
-plotResiduals(form = l21_l22outlier$Year, simulationOutput = simulatedOutput, asFactor = T)
+
+#check each variable
+plotResiduals(form = l21_l22$Lights, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$yDate, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$Lunar, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$WindSpeed, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$OnOffShore, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$fog, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$Year, simulationOutput = simulatedOutput, asFactor = T)
 
 #results
 Anova(mod5)
 
 summary(mod5)
 
-#inferences do not change, include outliers
+#lightsmod6 - negative binomial excluding outliers with dispersion formula 
+mod6 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22outlier, family = nbinom1(link = "log"), dispformula = ~fog)
+
+#test assumptions
+simulatedOutput <- simulateResiduals(fittedModel = mod6, plot = TRUE, refit = FALSE)
+
+#check each variable
+plotResiduals(form = l21_l22outlier$Lights, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$yDate, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22outlier$Lunar, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22outlier$WindSpeed, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22outlier$OnOffShore, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$fog, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$Year, simulationOutput = simulatedOutput, asFactor = T)
+
+#results
+Anova(mod6)
+
+summary(mod6)
+
+#inferences do not change in a biologically relevant way excluding outliers - lightsmod5 is best fit
 
 ```
 
