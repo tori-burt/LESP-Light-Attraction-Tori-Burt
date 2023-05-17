@@ -29,7 +29,7 @@ conflict_prefer("yday", "lubridate")
 ```{r tailoring data to analysis}
 
 #load data
-tb1 <- read.csv("data/Fishplant_Rounds_2022_TB.csv") 
+tb1 <- read.csv("data/Fishplant_Rounds_2022_TB.csv")
 
 #categorize fog conditions
 ID <- rownames(tb1)
@@ -57,28 +57,125 @@ for(i in 1:length(ID)){
 tb1$CloudCover_Cat <- unlist(tb1$CloudCover_Cat)
 tb1$CloudCover_Cat <- as.factor(tb1$CloudCover_Cat)
 
+#categorize wind to onshore and offshore based on tangent to coastline
+tb1_wind <- filter(tb1, Wind_Speed != "NA") %>%
+  mutate(Wind_Direction = as.numeric(Wind_Direction) * 10) %>%
+  mutate(OnOffShore = ifelse(Wind_Direction < 166, "onshore", ifelse(Wind_Direction > 346, "onshore", "offshore")))
+
 #make columns that just contain year, month, and day of year
-tb1$Date <- as.POSIXlt(tb1$Date, format = "%m/%d/%Y")
-tb1$Year <- tb1$Date$year
-tb1$Month <- tb1$Date$mon + 1
-tb1$Date <- as.POSIXct(tb1$Date)
-tb1$yDate <- yday(tb1$Date)
+tb1_wind$Date <- as.POSIXlt(tb1_wind$Date, format = "%m/%d/%Y")
+tb1_wind$Year <- tb1_wind$Date$year
+tb1_wind$Month <- tb1_wind$Date$mon + 1
+tb1_wind$Date <- as.POSIXct(tb1_wind$Date)
+tb1_wind$yDate <- yday(tb1_wind$Date)
 
 #classify variables
-tb1$Plant_lights <- as.factor(tb1$Plant_lights)
-tb1$Lunar <- gsub("Moon does not pass the meridan on this day", 100, tb1$Lunar)
-tb1$Lunar <- as.numeric(tb1$Lunar)
-tb1$yDate <- as.numeric(tb1$yDate)
-tb1$CloudCover_Cat <- as.factor(tb1$CloudCover_Cat)
-tb1$Year <- as.factor(tb1$Year)
+tb1_wind$Plant_lights <- as.factor(tb1_wind$Plant_lights)
+tb1_wind$Lunar <- gsub("Moon does not pass the meridan on this day", 100, tb1_wind$Lunar)
+tb1_wind$Lunar <- as.numeric(tb1_wind$Lunar)
+tb1_wind$yDate <- as.numeric(tb1_wind$yDate)
+tb1_wind$CloudCover_Cat <- as.factor(tb1_wind$CloudCover_Cat)
+tb1_wind$Year <- as.factor(tb1_wind$Year)
+tb1_wind$Wind_Speed <- as.numeric(tb1_wind$Wind_Speed)
+tb1_wind$OnOffShore <- as.factor(tb1_wind$OnOffShore)
 
 #select for columns of interest
-tb2 <- select(tb1, Date, Plant_lights, Total_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year) %>%
-  drop_na(Date, Plant_lights, Total_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year)
+tb2 <- select(tb1_wind, Date, Plant_lights, Total_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year, Wind_Speed, OnOffShore) %>%
+  drop_na(Date, Plant_lights, Total_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year, Wind_Speed, OnOffShore)
 
 ```
 
 ```{r analyzing data}
 
+#check outliers
+boxplot(tb2$Total_LESP_per_night, ylab = "Number of Stranded Birds", xlab = "")
 
+#1 outlier
+
+#filter out outliers
+tb3_outlier <- filter(tb2, Total_LESP_per_night < 1000)
+
+#visualize data
+hist(tb2$Total_LESP_per_night, breaks = 31)
+
+#lights boxplots
+boxplot(tb2$Total_LESP_per_night ~ tb2$Plant_lights, ylab = "Number of Stranded Birds", xlab = "")
+boxplot(tb3_outlier$Total_LESP_per_night ~ tb3_outlier$Plant_lights, ylab = "Number of Stranded Birds", xlab = "")
+
+#check for covariance
+my_vars <- tb2[, c("yDate", "Lunar", "Wind_Speed")]
+cor(my_vars)
+plot(my_vars)
+
+#lightsmod 1 - linear - poor fit
+mod1_tb <- lm(Total_LESP_per_night ~ Lunar + yDate + Plant_lights + Wind_Speed + OnOffShore + CloudCover_Cat + Year, data = tb2)
+
+#testing vif
+vif(mod1_tb)
+
+#testing assumptions
+plot(mod1_tb, ask = FALSE)
+
+#assumptions are violated
+
+#lightsmod2 - poisson distribution - poor fit
+mod2_tb <- glmmTMB(Total_LESP_per_night ~ Lunar + yDate + Plant_lights + Wind_Speed + OnOffShore + CloudCover_Cat + Year, data = tb2, family = poisson(link = "log"))
+
+#testing assumptions
+assumptions <- simulateResiduals(fittedModel = mod2_tb, plot = TRUE, refit = FALSE)
+
+#assumptions violated
+
+#test zero inflation - not significant
+testZeroInflation(assumptions)
+
+#lightsmod3 - negative binomial distribution - BEST FIT
+mod3_tb <- glmmTMB(Total_LESP_per_night ~ Lunar + yDate + Plant_lights + Wind_Speed + OnOffShore + Year + CloudCover_Cat, data = tb2, family = nbinom1(link = "log"))
+
+#testing assumptions
+assumptions <- simulateResiduals(fittedModel = mod3_tb, plot = TRUE, refit = FALSE)
+
+#check each variable
+plotResiduals(form = tb2$Plant_lights, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb2$yDate, simulationOutput = assumptions)
+plotResiduals(form = tb2$Lunar, simulationOutput = assumptions)
+plotResiduals(form = tb2$Year, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb2$CloudCover_Cat, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb2$OnOffShore, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb2$Wind_Speed, simulationOutput = assumptions)
+
+#testing dispersion - not significant
+testDispersion(mod3_tb)
+
+#results
+Anova(mod3_tb)
+summary(mod3_tb)
+ae <- allEffects(mod3_tb)
+plot(ae)
+
+#lightsmod4 - negative binomial excluding outlier
+mod4_tb <- glmmTMB(Total_LESP_per_night ~ Lunar + yDate + Plant_lights + Wind_Speed + OnOffShore + Year + CloudCover_Cat, data = tb3_outlier, family = nbinom1(link = "log"))
+
+#testing assumptions
+assumptions <- simulateResiduals(fittedModel = mod4_tb, plot = TRUE, refit = FALSE)
+
+#check each variable
+plotResiduals(form = tb3_outlier$Plant_lights, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb3_outlier$yDate, simulationOutput = assumptions)
+plotResiduals(form = tb3_outlier$Lunar, simulationOutput = assumptions)
+plotResiduals(form = tb3_outlier$Year, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb3_outlier$CloudCover_Cat, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb3_outlier$OnOffShore, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb3_outlier$Wind_Speed, simulationOutput = assumptions)
+
+#testing dispersion - not significant
+testDispersion(mod4_tb)
+
+#results
+Anova(mod4_tb)
+summary(mod4_tb)
+ae <- allEffects(mod4_tb)
+plot(ae)
+
+#inferences do not change in a biologically relevant way excluding outliers - lightsmod3 is best fit
 ```
