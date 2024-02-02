@@ -1,0 +1,422 @@
+---
+title: "General_Statistics_All_Surveys_TVB"
+author: "Tori Burt"
+date: "2023-08-31"
+output: html_document
+---
+```{r loading packages}
+
+library(tidyverse)
+
+```
+
+```{r load data files}
+
+load("Data_DMS.Rda") #Daily morning surveys (DMS) 
+load("Data_BWS.Rda") #Night surveys (NS)
+
+```
+
+```{r summary statistics}
+
+#number of birds in 2021 and 2022 - DMS
+birds_2021 <- data %>%
+  filter(Year != 122) %>%
+  drop_na(Total_LESP)
+sum(birds_2021$Total_LESP) #683 birds in 2021
+mean(birds_2021$Total_LESP)
+sd(birds_2021$Total_LESP)
+
+birds_2022 <- data %>%
+  filter(Year != 121) %>%
+  drop_na(Total_LESP)
+sum(birds_2022$Total_LESP) #652 birds in 2022
+mean(birds_2022$Total_LESP)
+sd(birds_2022$Total_LESP)
+
+```
+
+```{r total number affected}
+
+#total number of birds - DMS
+dms_total_affected<- data %>%
+  drop_na(Total_LESP)
+
+sum_DMS <- sum(dms_total_affected$Total_LESP) #1335 birds stranded
+
+#total number of birds - NS
+NS_total_affected <- tb1 %>%
+  drop_na(Total_LESP_per_night)
+
+sum_NS <- sum(NS_total_affected$Total_LESP_per_night) #2590 birds stranded
+
+#carcass count
+sum_carcass <- 300
+
+#total number affected - all surveys + carcass count
+sum_NS + sum_DMS + sum_carcass #4225 birds affected
+
+```
+
+```{r survival and mortality}
+
+#total number of birds alive and dead - DMS
+dms_dead <- data %>%
+  drop_na(Dead_LESP)
+
+#total number of dead birds
+sum_dead_DMS <- sum(dms_dead$Dead_LESP) #145 dead, #1190 live
+
+#total number of birds alive and dead - NS
+#number of live birds
+ns_live <- tb1 %>%
+  drop_na(Live_LESP_per_night)
+
+sum_live_NS <- sum(ns_live$Live_LESP_per_night) #2210 birds
+
+#number of dead birds
+ns_dead <- tb1 %>%
+  drop_na(Dead_LESP_per_night)
+
+sum_dead_NS <- sum(ns_dead$Dead_LESP_per_night) #140 birds
+
+#Total number of adults live + dead
+#number of live adults
+ns_live_ad <- tb1 %>%
+  drop_na(Live_adults)
+
+sum_live_ad_NS <- sum(ns_live_ad$Live_adults) #239 live adults + 1 unidentified so include with adult count - 240 live adults
+
+#number of dead adults
+ns_dead_ad <- tb1 %>%
+  drop_na(Dead_adults)
+
+sum_dead_ad_NS <- sum(ns_dead_ad$Dead_adults) #10 dead adults
+#249 total adults live + dead
+
+#Total number of adults live + dead 2022
+#filter for year = 2022
+ns_dead_ad_22 <- ns_dead_ad %>%
+  filter(Year != 121)
+
+ns_live_ad_22 <-  ns_live_ad %>%
+  filter(Year != 121)
+
+sum_dead_ad_NS_22 <- sum(ns_dead_ad_22$Dead_adults)
+
+sum_live_ad_NS_22 <- sum(ns_live_ad_22$Live_adults)
+
+sum_live_ad_NS_22 + sum_dead_ad_NS_22 #211 total adults live + dead 2022 + 1 unidentified so include with adult count
+
+#Total number of juveniles live + dead
+#number of live juveniles
+ns_live_juv <- tb1 %>%
+  drop_na(Live_juveniles)
+
+sum_live_juv_NS <- sum(ns_live_juv$Live_juveniles) #1516 live juveniles
+
+#number of dead juveniles
+ns_dead_juv <- tb1 %>%
+  drop_na(Dead_juveniles)
+
+sum_dead_juv_NS <- sum(ns_dead_juv$Dead_juveniles) #93 dead juveniles
+#1609 total juveniles live + dead
+
+#Total number of juveniles live + dead 2022
+#filter for year = 2022
+ns_dead_juv_22 <- ns_dead_juv %>%
+  filter(Year != 121)
+
+ns_live_juv_22 <-  ns_live_juv %>%
+  filter(Year != 121)
+
+sum_dead_juv_NS_22 <- sum(ns_dead_juv_22$Dead_juveniles)
+
+sum_live_juv_NS_22 <- sum(ns_live_juv_22$Live_juveniles)
+
+sum_live_juv_NS_22 + sum_dead_juv_NS_22 #361 total juveniles live + dead 2022
+
+#Total birds dead - all surveys
+sum_dead_NS + sum_dead_DMS #285 birds
+
+#carcass count
+sum_carcass <- 300
+
+#Total birds dead - all surveys + carcass counts
+sum_dead_NS + sum_dead_DMS + sum_carcass #585 birds
+
+```
+
+```{r number stranded lights on/off}
+
+#number stranded when lights on and off - DMS
+data_lightson <- data %>%
+  filter(Lights != "off") %>%
+  drop_na(Total_LESP)
+
+sum_lighton_dms <- sum(data_lightson$Total_LESP) #355 birds lights on
+mean(data_lightson$Total_LESP) #mean = 3.20 birds with lights on
+sd(data_lightson$Total_LESP) #sd = 8.44 
+median(data_lightson$Total_LESP) #median = 1
+
+data_lightsoff <- data %>%
+  filter(Lights != "on") %>%
+  drop_na(Total_LESP)
+
+sum_lightoff_dms <- sum(data_lightsoff$Total_LESP) #974 birds lights off
+mean(data_lightsoff$Total_LESP) #mean = 5.60 birds with lights off
+sd(data_lightsoff$Total_LESP) #sd = 36.53
+median(data_lightsoff$Total_LESP) #median = 0
+
+#number stranded when lights on and off - NS
+tb1_lightson <- tb1 %>%
+  filter(Plant_lights != "Off") %>%
+  drop_na(Total_LESP_per_night)
+
+sum_lighton_ns <- sum(tb1_lightson$Total_LESP_per_night) #1595 birds lights on
+mean(tb1_lightson$Total_LESP_per_night) #mean = 145 birds with lights on
+sd(tb1_lightson$Total_LESP_per_night) #sd = 322.38
+median(tb1_lightson$Total_LESP_per_night) #median = 33
+
+tb1_lightsoff <- tb1 %>%
+  filter(Plant_lights != "On") %>%
+  drop_na(Total_LESP_per_night)
+
+sum_lightoff_ns <- sum(tb1_lightsoff$Total_LESP_per_night) #955 birds lights off
+mean(tb1_lightsoff$Total_LESP_per_night) #mean = 43.41 birds lights off
+sd(tb1_lightsoff$Total_LESP_per_night) #sd = 98.19
+median(tb1_lightsoff$Total_LESP_per_night) #median = 8
+
+#total number with lights on and off - all surveys
+#lights on
+sum_lighton_dms + sum_lighton_ns #1950 birds stranded
+
+#lights off
+sum_lightoff_dms + sum_lightoff_ns #1929 birds stranded
+```
+
+```{r birds stranded during peak stranding season}
+
+#birds stranded during peak stranding season - DMS
+data_peak_dms <- data %>%
+  filter(yDate > 267) %>%
+  filter(yDate < 302) %>%
+  drop_na(Total_LESP)
+
+sum_peak_dms <- sum(data_peak_dms$Total_LESP) #874 birds
+
+#birds stranded during peak stranding season - NS
+tb1_peak_ns <- tb1 %>%
+  filter(yDate > 267) %>%
+  filter(yDate < 302) %>%
+  drop_na(Total_LESP_per_night)
+
+sum_peak_ns <- sum(tb1_peak_ns$Total_LESP_per_night) #2386 birds
+
+#adults stranded during peak stranding season
+tb1_peak_ns_ad_liv <- tb1 %>%
+  filter(yDate > 267) %>%
+  filter(yDate < 302) %>%
+  drop_na(Live_adults)
+
+tb1_peak_ns_ad_dead <- tb1 %>%
+  filter(yDate > 267) %>%
+  filter(yDate < 302) %>%
+  drop_na(Dead_adults)
+  
+sum(tb1_peak_ns_ad_liv$Live_adults) #83 live adults
+sum(tb1_peak_ns_ad_dead$Dead_adults) #2 dead adults
+
+#adults stranded from June to August
+tb1_Jun_Aug_ns_ad_liv <- tb1 %>%
+  filter(yDate > 151) %>%
+  filter(yDate < 244) %>%
+  drop_na(Live_adults)
+
+tb1_Jun_Aug_ns_ad_dead <- tb1 %>%
+  filter(yDate > 151) %>%
+  filter(yDate < 244) %>%
+  drop_na(Dead_adults)
+  
+sum(tb1_Jun_Aug_ns_ad_liv$Live_adults) #156 live adults
+sum(tb1_Jun_Aug_ns_ad_dead$Dead_adults) #8 dead adults
+
+#juveniles stranded during peak stranding season
+
+tb1_peak_ns_juv_liv <- tb1 %>%
+  filter(yDate > 267) %>%
+  filter(yDate < 302) %>%
+  drop_na(Live_juveniles)
+
+tb1_peak_ns_juv_dead <- tb1 %>%
+  filter(yDate > 267) %>%
+  filter(yDate < 302) %>%
+  drop_na(Dead_juveniles)
+  
+sum(tb1_peak_ns_juv_liv$Live_juveniles) #1488 live juv
+sum(tb1_peak_ns_juv_dead$Dead_juveniles) #90 dead juv
+
+#carcass counts - average number of birds stranded per night
+mort_avg <- 10.74167
+
+#carcass counts - mortality estimate during peak stranding period
+sum_peak_carcass <- mort_avg*17 #17 days of carcass collection during peak stranding period
+#182 birds died during peak stranding period 2022
+
+#birds stranded during peak stranding season - all surveys
+sum_peak_dms + sum_peak_ns #3260
+
+#birds stranded during peak stranding season - all surveys + carcass counts
+sum_peak_dms + sum_peak_ns + sum_peak_carcass #3442 birds 
+
+```
+
+```{r birds stranded during each month}
+
+#Number of adult + juveniles stranded during each month
+#April
+tb1_april <- tb1 %>%
+  filter(yDate > 90) %>%
+  filter(yDate < 121)
+tb1_april[is.na(tb1_april)] <- 0
+#2021 - no surveys
+#2022 - 0 birds
+
+#May
+tb1_may <- tb1 %>%
+  filter(yDate > 120) %>%
+  filter(yDate < 152) 
+tb1_may[is.na(tb1_may)] <- 0
+#2021 - no surveys
+#2022 - 0 birds
+
+#June 2021
+tb1_june_21 <- tb1 %>%
+  filter(yDate > 151) %>%
+  filter(yDate < 182) %>% 
+  filter(Year != "122")
+tb1_june_21[is.na(tb1_june_21)] <- 0
+
+sum(tb1_june_21$Live_adults) + sum(tb1_june_21$Dead_adults)
+#2021 - 8 adults
+
+tb1_june_22 <- tb1 %>%
+  filter(yDate > 151) %>%
+  filter(yDate < 182) %>% 
+  filter(Year != "121")
+tb1_june_22[is.na(tb1_june_22)] <- 0
+
+sum(tb1_june_22$Live_adults) + sum(tb1_june_22$Dead_adults)
+sum(tb1_june_22$Total_LESP_per_night)
+#2022 - 46 adults, 1 unidentified but can assume adult
+
+#July
+tb1_july <- tb1 %>%
+  filter(yDate > 181) %>%
+  filter(yDate < 213) 
+tb1_july[is.na(tb1_july)] <- 0
+
+sum(tb1_july$Live_adults) + sum(tb1_july$Dead_adults)
+#2021 - no surveys
+#2022 - 41 adults
+
+#August
+tb1_aug <- tb1 %>%
+  filter(yDate > 212) %>%
+  filter(yDate < 244)
+tb1_aug[is.na(tb1_aug)] <- 0
+
+sum(tb1_aug$Live_adults) + sum(tb1_aug$Dead_adults)
+#2021 - no surveys
+#2022 - 70 adults
+
+#September
+tb1_sep_21 <- tb1 %>%
+  filter(yDate > 243) %>%
+  filter(yDate < 274) %>%
+  filter(Year != 122)
+tb1_sep_21[is.na(tb1_sep_21)] <- 0
+
+sumad_sep_21 <- sum(tb1_sep_21$Live_adults) + sum(tb1_sep_21$Dead_adults)
+#2021 - 16 adults
+
+sumjuv_sep_21 <- sum(tb1_sep_21$Live_juveniles) + sum(tb1_sep_21$Dead_juveniles)
+#2021 - 24 juveniles
+
+sum(tb1_sep_21$Total_LESP_per_night)
+#2021 - 40 birds total, 16 adults, 24 juveniles, 0 unidentified
+
+tb1_sep_22 <- tb1 %>%
+  filter(yDate > 243) %>%
+  filter(yDate < 274) %>%
+  filter(Year != 121)
+tb1_sep_22[is.na(tb1_sep_22)] <- 0
+
+sumad_22_sep <- sum(tb1_sep_22$Live_adults) + sum(tb1_sep_22$Dead_adults)
+#2022 - 9 adults
+sumjuv_22_sep <- sum(tb1_sep_22$Live_juveniles) + sum(tb1_sep_22$Dead_juveniles)
+#2022 - 32 juveniles
+sum(tb1_sep_22$Total_LESP_per_night)
+#2022 - 49 birds total, 9 adults, 32 juveniles, 8 unidentified
+
+tb1_oct_21 <- tb1 %>%
+  filter(yDate > 273) %>%
+  filter(yDate < 305) %>%
+  filter(Year != "122")
+tb1_oct_21[is.na(tb1_oct_21)] <- 0
+
+sumad_21_oct <- sum(tb1_oct_21$Live_adults) + sum(tb1_oct_21$Dead_adults)
+#2021 - 14 adults
+sumjuv_21_oct <- sum(tb1_oct_21$Live_juveniles) + sum(tb1_oct_21$Dead_juveniles)
+#2021 - 1224 juveniles
+sum(tb1_oct_21$Total_LESP_per_night)
+#2021 - 1922 birds total, 14 adults, 1224 juveniles, 684 unidentified
+    
+tb1_oct_22 <- tb1 %>%
+  filter(yDate > 273) %>%
+  filter(yDate < 305) %>%
+  filter(Year != "121")
+tb1_oct_22[is.na(tb1_oct_22)] <- 0
+
+sumad_22_oct <- sum(tb1_oct_22$Live_adults) + sum(tb1_oct_22$Dead_adults)
+#2022 - 46 adults
+sumjuv_22_oct <- sum(tb1_oct_22$Live_juveniles) + sum(tb1_oct_22$Dead_juveniles)
+#2022 - 329 juveniles
+sum(tb1_oct_22$Total_LESP_per_night)
+#2022 - 414 birds total, 46 adults, 329 juveniles, 39 unidentified
+
+```
+
+```{r mass stranding events}
+
+#removing dates where nightly surveys were conducted
+data_exc_nightsur <-  data %>%
+  filter(Date != "2021-09-25", Date != "2021-06-25", Date != "2021-10-01", Date != "2022-05-04", Date != "2022-05-05", Date != "2022-06-01", Date != "2022-06-14", Date != "2022-06-30", Date != "2022-07-28", Date != "2022-08-11", Date != "2022-08-12", Date != "2022-09-09", Date != "2022-09-29", Date != "2022-09-30", Date != "2022-10-16", Date != "2022-10-20")
+
+#categorizing wind direction - onshore, offshore
+data_wind <-  data_exc_nightsur %>%
+  mutate(Wind.Direction = as.numeric(Wind.Direction) * 10) %>%
+  mutate(OnOffShore = ifelse(Wind.Direction < 166, "onshore", ifelse(Wind.Direction > 346, "onshore", "offshore")))
+
+#categorizing wind direction - onshore, offshore
+tb1_wind <- tb1 %>%
+  mutate(Wind.Direction = as.numeric(Wind_Direction) * 10) %>%
+  mutate(OnOffShore = ifelse(Wind_Direction < 166, "onshore", ifelse(Wind_Direction > 346, "onshore", "offshore")))
+
+#mass stranding - DMS
+data_mass <- data_wind %>%
+  filter(Total_LESP > 99)
+#Sep-30-2021 - 283 birds, fog, rain, WS: 39 km/h, WD: onshore, Lunar: 37.0
+#Oct-19-2022 - 387 birds, fog, WS: 44 km/h, WD: onshore, Lunar: 33.8
+
+#mass strandings - NS
+tb1_mass <- tb1_wind  %>%
+  filter(Total_LESP_per_night > 100)
+#Oct-1-2021 - 443 birds, fog, rain, WS: NA , WD: NA, Lunar: 28.0, CC: NA
+#Oct-2-2021 - 138 birds, no fog, WS: 42 km/h, WD: onshore, Lunar: 19.0, CC: < 50%
+#Oct-3-2021 - 1100 birds, no fog, WS: 35 km/h, WD: onshore, Lunar: 11.0, CC: > 50%
+#Oct-4-2021 - 108 birds, no fog, WS: 55 km/h, WD: onshore, Lunar: 5.0, CC: > 50%
+#Oct-16-2022 - 188 birds, no fog, WS: 67 km/h, WD: onshore, Lunar: 62.8, CC: > 50%
+#Oct-19-2022 - 167 birds, fog, WS: 44 km/h, WD: onshore, Lunar: 33.8, CC: NA
+
+```

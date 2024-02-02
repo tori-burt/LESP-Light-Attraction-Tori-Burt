@@ -1,0 +1,38 @@
+---
+title: "Carcass_counts_TVB"
+author: "Tori Burt"
+date: "2023-07-31"
+output: html_document
+---
+
+```{r carcass count estimate}
+
+#load data
+data <- read.csv("data/LESP_carcasses_2022_TB_2023_07_31.csv")
+
+#days between first and second collection
+days1 <- 28-13
+
+#days between second and third collection
+days2 <- 29-28
+
+#days between third and fourth collection
+days3 <- (30-28)+14
+
+#carcass estimate per collection day
+thirteen_sept <- 50
+tweight_sept <- 79+(70/2)
+twnine_sept <- 15+(15/2)
+fourteen_oct <- 24+(20/2)
+
+#estimated number of moralities per night for each collection period
+mort1 <- tweight_sept/days1
+mort2 <-twnine_sept
+mort3 <- fourteen_oct/days3
+
+#average mortality 
+mort_avg <- ((mort1 + mort2 + mort3)/3) #average 10.74167 birds per night
+
+#average mortality during collection period minus collection nights (September 13 - October 14)
+mort_avg_total <- mort_avg*28 #300 birds
+```

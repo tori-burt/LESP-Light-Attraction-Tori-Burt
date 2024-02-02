@@ -1,0 +1,163 @@
+---
+title: "Cleaning_up_biweekly_survey_TVB"
+author: "Tori Burt"
+date: "2023-05-15"
+output: html_document
+---
+
+```{r loading packages}
+
+library(lme4) #run lme4 before lmerTest 
+library(lmerTest)
+library(glmmTMB)
+library(tidyverse)
+library(car)
+library(DHARMa)
+library(effects)
+library(ggeffects)
+library(conflicted)
+library(data.table)
+library(effects)
+library(lubridate)
+
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+conflict_prefer("yday", "lubridate")
+
+```
+
+```{r tailoring data to analysis}
+
+#load data
+load("Data_BWS.Rda")
+
+#categorize wind to onshore and offshore based on tangent to coastline
+tb2_wind <- filter(tb1, Wind_Speed != "NA") %>%
+  mutate(Wind_Direction = as.numeric(Wind_Direction) * 10) %>%
+  mutate(OnOffShore = ifelse(Wind_Direction < 166, "onshore", ifelse(Wind_Direction > 346, "onshore", "offshore")))
+tb2_wind$OnOffShore <- as.factor(tb2_wind$OnOffShore)
+
+#select for columns of interest
+tb2 <- select(tb2_wind, Date, Plant_lights, Total_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year, Wind_Speed, OnOffShore) %>%
+  drop_na(Date, Plant_lights, Total_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year, Wind_Speed, OnOffShore) %>%
+  filter(CloudCover_Cat != "NA") 
+
+```
+
+```{r analyzing data}
+
+#check outliers
+boxplot(tb2$Total_LESP_per_night, ylab = "Number of Stranded Birds", xlab = "")
+
+#1 outlier
+
+#filter out outliers
+tb3_outlier <- filter(tb2, Total_LESP_per_night < 1000)
+
+#visualize data
+hist(tb2$Total_LESP_per_night, breaks = 31)
+
+#lights boxplots
+boxplot(tb2$Total_LESP_per_night ~ tb2$Plant_lights, ylab = "Number of Stranded Birds", xlab = "")
+boxplot(tb3_outlier$Total_LESP_per_night ~ tb3_outlier$Plant_lights, ylab = "Number of Stranded Birds", xlab = "")
+
+#check for covariance
+my_vars <- tb2[, c("yDate", "Lunar", "Wind_Speed")]
+cor(my_vars)
+plot(my_vars)
+
+#lightsmod 1 - linear - poor fit
+mod1_tb <- lm(Total_LESP_per_night ~ Lunar + yDate + Plant_lights + Wind_Speed + OnOffShore + CloudCover_Cat + Year, data = tb2)
+
+#testing vif
+vif(mod1_tb)
+
+#testing assumptions
+plot(mod1_tb, ask = FALSE)
+
+#assumptions are violated
+
+#lightsmod2 - poisson distribution - poor fit
+mod2_tb <- glmmTMB(Total_LESP_per_night ~ Lunar + yDate + Plant_lights + Wind_Speed + OnOffShore + CloudCover_Cat + Year, data = tb2, family = poisson(link = "log"))
+
+#testing assumptions
+assumptions <- simulateResiduals(fittedModel = mod2_tb, plot = TRUE, refit = FALSE)
+
+#assumptions violated
+
+summary(mod2_tb)
+
+#test zero inflation - not significant
+testZeroInflation(assumptions)
+
+#lightsmod3 - negative binomial distribution 
+mod3_tb <- glmmTMB(Total_LESP_per_night ~ Lunar + yDate + Plant_lights + Wind_Speed + OnOffShore + Year + CloudCover_Cat, data = tb2, family = nbinom1(link = "log"))
+
+#testing assumptions
+assumptions <- simulateResiduals(fittedModel = mod3_tb, plot = TRUE, refit = FALSE)
+
+#check each variable
+plotResiduals(form = tb2$Plant_lights, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb2$yDate, simulationOutput = assumptions)
+plotResiduals(form = tb2$Lunar, simulationOutput = assumptions)
+plotResiduals(form = tb2$Year, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb2$CloudCover_Cat, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb2$OnOffShore, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb2$Wind_Speed, simulationOutput = assumptions)
+
+#testing dispersion - not significant
+testDispersion(mod3_tb)
+
+#results
+Anova(mod3_tb)
+summary(mod3_tb)
+ae <- allEffects(mod3_tb)
+plot(ae)
+
+#lightsmod4 - negative binomial excluding outlier - BEST FIT
+#relevel categories
+tb3_outlier <- within(tb3_outlier, Plant_lights <- relevel(Plant_lights, ref = "On"))
+mod4_tb <- glmmTMB(Total_LESP_per_night ~ Lunar + yDate + Plant_lights + Wind_Speed + OnOffShore + Year + CloudCover_Cat, data = tb3_outlier, family = nbinom1(link = "log"), dispformula = ~yDate)
+
+#testing assumptions
+assumptions <- simulateResiduals(fittedModel = mod4_tb, plot = TRUE, refit = FALSE)
+
+#check each variable
+plotResiduals(form = tb3_outlier$Plant_lights, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb3_outlier$yDate, simulationOutput = assumptions)
+plotResiduals(form = tb3_outlier$Lunar, simulationOutput = assumptions)
+plotResiduals(form = tb3_outlier$Year, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb3_outlier$CloudCover_Cat, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb3_outlier$OnOffShore, simulationOutput = assumptions, asFactor = T)
+plotResiduals(form = tb3_outlier$Wind_Speed, simulationOutput = assumptions)
+
+#testing dispersion - not significant
+testDispersion(mod4_tb)
+
+#results
+Anova(mod4_tb)
+summary(mod4_tb)
+ae <- allEffects(mod4_tb)
+plot(ae)
+confint(mod4_tb, parm = NULL, level = 0.95, method = "wald")
+
+```
+
+```{r figure construction}
+
+#effects plot
+effect <- ggpredict(mod4_tb, terms = "Plant_lights")
+lights_df_bws <- as.data.frame(effect)
+png(filename = "Figures/effect_light_2022_BWS_TVB.png", width = 2000, height = 1538, res = 600)
+plt <- ggplot(data = lights_df_bws, aes(x = x, ymin = 0, ymax = 99)) +
+  theme(axis.title = element_text(size = 9)) +
+  geom_line(aes(y = predicted, group = 2)) +
+  geom_point(aes(y = predicted, x = x)) +
+  labs(x="Lighting Condition", y="Predicted Counts of Stranded Birds") +
+  theme(panel.background = element_rect(fill = 'white', colour = 'black')) +
+  geom_text(x = 1, y = 51.5, label = "47.00", size = 3) +
+  geom_text(x = 2, y = 23, label = "17.97", size = 3)
+plt + geom_ribbon(aes(x = 1:length(x), ymin = conf.low, ymax = conf.high), alpha =.2) 
+dev.off()
+
+```

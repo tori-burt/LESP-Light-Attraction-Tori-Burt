@@ -1,0 +1,86 @@
+---
+title: "Cleaning_up_Night_Survey_data_AD_TVB"
+author: "Tori Burt"
+date: "2024-01-30"
+output: html_document
+---
+
+```{r loading packages}
+
+library(tidyverse)
+library(data.table)
+library(cimir)
+library(anytime)
+
+```
+
+```{r cleaning up data}
+
+#load data
+tb1 <- read.csv("data/Fishplant_Rounds_2022_TB_2024_01_08.csv")
+
+#categorize fog conditions
+ID <- rownames(tb1)
+for(i in 1:length(ID)){
+  tb1$Fog_Cat[[i]] <- if(tb1$Weather_Conditions[[i]] %like% "2"){
+    print("Fog") }
+  else if(tb1$Weather_Conditions[[i]] %like% "3"){
+    print("Fog") }
+  else if(tb1$Weather_Conditions[[i]] %like% "6"){
+    print("Fog") }
+  else {print("No fog")}
+}
+tb1$Fog_Cat <- unlist(tb1$Fog_Cat)
+tb1$Fog_Cat <- as.factor(tb1$Fog_Cat)
+
+#categorize cloud cover
+ID <- rownames(tb1)
+for(i in 1:length(ID)){
+  tb1$CloudCover_Cat[[i]] <- if(tb1$Weather_Conditions[[i]] %like% "0"){
+    print("< 50% Cloud Cover") }
+  else if(tb1$Weather_Conditions[[i]] %like% "1"){
+    print("> 50% Cloud Cover") }
+  else {print("NA")}
+}
+tb1$CloudCover_Cat <- unlist(tb1$CloudCover_Cat)
+tb1$CloudCover_Cat <- as.factor(tb1$CloudCover_Cat)
+
+#make columns that just contain year, month, and day of year
+tb1$Date <- as.POSIXlt(tb1$Date, format = "%m/%d/%Y")
+tb1$Year <- tb1$Date$year
+tb1$Month <- tb1$Date$mon + 1
+tb1$Date <- as.POSIXct(tb1$Date)
+tb1$yDate <- yday(tb1$Date)
+
+#classify variables
+tb1$Total_LESP_per_night <- as.numeric(tb1$Total_LESP_per_night)
+tb1$Live_LESP_per_night <- as.numeric(tb1$Live_LESP_per_night)
+tb1$Dead_LESP_per_night <- as.numeric(tb1$Dead_LESP_per_night)
+tb1$Total_ad_LESP_per_night <- as.numeric(tb1$Total_ad_LESP_per_night)
+tb1$Total_juv_LESP_per_night <- as.numeric(tb1$Total_juv_LESP_per_night)
+tb1$Total_unk_LESP_per_night <- as.numeric(tb1$Total_unk_LESP_per_night)
+tb1$Live_adults <- as.numeric(tb1$Live_adults)
+tb1$Dead_adults <- as.numeric(tb1$Dead_adults)
+tb1$Dead_breeding_adults <- as.numeric(tb1$Dead_breeding_adults)
+tb1$Dead_nonbreeders <- as.numeric(tb1$Dead_nonbreeders)
+tb1$Dead_juveniles <- as.numeric(tb1$Dead_juveniles)
+tb1$Live_juveniles <- as.numeric(tb1$Live_juveniles)
+tb1$Lunar <- gsub("Moon does not pass the meridan on this day", 100, tb1$Lunar)
+tb1$Lunar <- as.numeric(tb1$Lunar)
+tb1$yDate <- as.numeric(tb1$yDate)
+tb1$CloudCover_Cat <- as.factor(tb1$CloudCover_Cat)
+tb1$Year <- as.factor(tb1$Year)
+tb1$Wind_Speed <- as.numeric(tb1$Wind_Speed)
+tb1$Wind_Direction <- as.numeric(tb1$Wind_Direction)
+tb1$CloudCover_Cat <- factor(tb1$CloudCover_Cat, c("< 50% Cloud Cover", "> 50% Cloud Cover"))
+tb1 <- tb1 %>% arrange(Date, Time) %>%
+  mutate(across('Plant_lights', str_replace, 'Off', 'Reduced'))
+tb1$Plant_lights <- as.factor(tb1$Plant_lights)
+
+#select for columns of interest
+tb1_ad <- select(tb1, Date, Time, Plant_lights, Total_ad_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Month, Lunar, Year, Wind_Speed, Wind_Direction)
+
+#save the data file
+save(tb1_ad, file = "Data_Night_survey_ad.Rda")
+
+```

@@ -1,0 +1,328 @@
+---
+title: "Plotting_BdV_Map_TVB"
+author: "Tori Burt"
+date: "2023-05-08"
+output: html_document
+---
+
+```{r loading packages}
+
+library(tidyverse)
+library(sf)
+library(ggpubr)
+library(legendMap)
+library(ggspatial)
+library(viridis)
+library(ggpattern)
+library(data.table)
+library(lubridate)
+library(scales)
+
+conflicts_prefer(dplyr::filter)
+
+```
+
+```{r bdv map}
+
+#import NL shape file
+nl.map <- st_read(file.path("gpr_000b11a_e/gpr_000b11a_e.shp")) 
+
+#shape file for the 2011 Census by Geo Statistics Canada, available at: https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2011-eng.cfm
+
+#setting map boundaries
+xmin <- -53 #zoomed in
+xmax <- -52.6
+ymin <- 48
+ymax <- 48.25
+
+#creating plot of canada
+map1 <- ggplot() +
+  theme_bw() + #aesthetic parameters
+  coord_sf() +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.text.x = element_text(colour = 'black'),
+        axis.text.y = element_text(colour = 'black')) +
+  scale_x_continuous(labels = function(x) paste0(x, '\u00B0', "W")) +
+  scale_y_continuous(labels = function(x) paste0(x, '\u00B0', "N")) +
+  geom_sf(data = nl.map, #inserting the shape file
+          colour = 'black',
+          fill = 'grey') +
+  labs(x = 'Longitude', #naming labels
+       y = 'Latitude') +
+  annotate("text", x = -140, y= 82, label= "A", size = 7) +
+  annotation_north_arrow(location = "tr", which_north = "true",
+    pad_x = unit(0.001, "in"), pad_y = unit(0.1, "in"),style = ggspatial::north_arrow_nautical(
+      fill = c("grey40", "white"),
+      line_col = "grey20")) +
+  geom_point(aes(x = -52.89831, y = 48.09780), colour="red", size = 2) 
+
+map2 <- ggplot() +
+  theme_bw() + #aesthetic parameters
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.text.x = element_text(colour = 'black'),
+        axis.text.y = element_text(colour = 'black')) +
+  geom_sf(data = nl.map, #inserting the shape file
+          colour = 'black',
+          fill = 'grey') +
+  scale_x_continuous(labels = function(x) paste0(x, '\u00B0', "W")) +
+  scale_y_continuous(labels = function(x) paste0(x, '\u00B0', "N")) +
+  coord_sf(xlim = c(xmin, xmax), #setting map boundaries
+           ylim = c(ymin, ymax)) +
+  labs(x = 'Longitude', #naming labels
+       y = 'Latitude') +
+  geom_point(aes(x = -52.89831, y = 48.09780), colour="red", size = 2) +
+  geom_point(aes(x = -52.802, y = 48.135), colour="red", size = 2) +
+  annotate("text", x= -53, y= 48.25, label= "B", size = 7) +
+  annotate("text", x= -52.93, y= 48.11, label= "Bay de Verde", size = 3) +
+  annotate("text", x= -52.8, y= 48.17, label= "Baccalieu Island", size = 3) +
+  scale_bar(lon = -52.75, lat = 48, distance_lon = 5, distance_lat = 2, distance_legend = 3, dist_unit = "km", orientation = F) +
+  annotation_north_arrow(location = "tr", which_north = "true",
+  pad_x = unit(0.03, "in"), pad_y = unit(0.1, "in"), style =
+  ggspatial::north_arrow_nautical(
+      fill = c("grey40", "white"),
+      line_col = "grey20"))
+
+png(filename = "figures/Map_Canada_BdV.png", width = 2000, height = 1000, res = 300)
+ggarrange(map1, map2)
+dev.off()
+```
+
+```{r Onshore Offshore Plot}
+
+png(filename = "figures/Map_Canada_WindDir.png", width = 2000, height = 2000, res = 300)
+ggplot() +
+  theme_bw() + #aesthetic parameters
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.text.x = element_text(colour = 'black', size = 10),
+        axis.text.y = element_text(colour = 'black', size = 10)) +
+  geom_sf(data = nl.map, #inserting the shape file
+          colour = 'black',
+          fill = 'grey') +
+  coord_sf(xlim = c(-51.5, -54), ylim = c(47.25158, 48.82521)) +
+  geom_segment(lineend = "round", aes(x = -52.99618, y = 48.59913, xend = -52.65213, yend = 47.61971)) +
+  scale_x_continuous(labels = function(x) paste0(x, '\u00B0', "W")) +
+  scale_y_continuous(labels = function(x) paste0(x, '\u00B0', "N")) +
+  labs(x = 'Longitude', #naming labels
+       y = 'Latitude') +
+  geom_point(aes(x = -52.99618, y = 48.59913), colour="red", size = 2) + 
+  geom_point(aes(x = -52.65213, y = 47.61971), colour="red", size = 2) +
+  geom_point(aes(x = -52.89831, y = 48.09780), colour="red", size = 2) +
+  annotate("text", x= -52.7, y= 48.59913, label= "Flowers Point", size = 3.5) +
+  annotate("text", x= -52.33, y= 47.61971, label= "Sugarloaf Head", size = 3.5) +
+  annotate("text", x= -52.53, y= 48.09780, label= "Bay de Verde", size = 3.5) +
+  scale_bar(lon = -52.2, lat = 47.25, distance_lon = 25, distance_lat = 10, distance_legend = 15, dist_unit = "km", orientation = F) +
+  annotation_north_arrow(location = "tr", which_north = "true",
+    pad_x = unit(0.1, "in"), pad_y = unit(0.1, "in"),
+    style = ggspatial::north_arrow_nautical(
+      fill = c("grey40", "white"),
+      line_col = "grey20"))
+dev.off()
+
+```
+
+```{r tailoring data to search effort}
+
+#load data
+load("Data.Rda")
+load("Data_NS.Rda")
+
+#selecting necessary columns and dropping NA in DMS
+DMS_date_21 <- data %>%
+  select(Total_LESP, yDate, Month, Year) %>%
+  drop_na(Total_LESP, yDate, Month, Year) %>%
+  filter(Year != 122)
+
+DMS_date_22 <- data %>%
+  select(Total_LESP, yDate, Month, Year) %>%
+  drop_na(Total_LESP, yDate, Month, Year) %>%
+  filter(Year != 121)
+
+NS_date_21 <- tb1 %>%
+  select(Total_LESP_per_night, yDate, Month, Year) %>%
+  drop_na(Total_LESP_per_night, yDate, Month, Year) %>%
+  filter(Year != 122)
+
+NS_date_22 <- tb1 %>%
+  select(Total_LESP_per_night, yDate, Month, Year) %>%
+  drop_na(Total_LESP_per_night, yDate, Month, Year) %>%
+  filter(Year != 121)
+
+#number of surveys per month in 2021 - DMS
+nrow(DMS_date_21[DMS_date_21$Month == '4', ]) #1
+nrow(DMS_date_21[DMS_date_21$Month == '5', ]) #6
+nrow(DMS_date_21[DMS_date_21$Month == '6', ]) #10
+nrow(DMS_date_21[DMS_date_21$Month == '7', ]) #31
+nrow(DMS_date_21[DMS_date_21$Month == '8', ]) #31
+nrow(DMS_date_21[DMS_date_21$Month == '9', ]) #29
+nrow(DMS_date_21[DMS_date_21$Month == '10', ]) #20
+nrow(DMS_date_21[DMS_date_21$Month == '11', ]) #30
+
+#number of surveys per month in 2022 - DMS
+nrow(DMS_date_22[DMS_date_22$Month == '4', ]) #0
+nrow(DMS_date_22[DMS_date_22$Month == '5', ]) #23
+nrow(DMS_date_22[DMS_date_22$Month == '6', ]) #30
+nrow(DMS_date_22[DMS_date_22$Month == '7', ]) #22
+nrow(DMS_date_22[DMS_date_22$Month == '8', ]) #13
+nrow(DMS_date_22[DMS_date_22$Month == '9', ]) #28
+nrow(DMS_date_22[DMS_date_22$Month == '10', ]) #30
+nrow(DMS_date_22[DMS_date_22$Month == '11', ]) #10
+
+#number of surveys per month in 2021 - NS
+nrow(NS_date_21[NS_date_21$Month == '4', ]) #0
+nrow(NS_date_21[NS_date_21$Month == '5', ]) #0
+nrow(NS_date_21[NS_date_21$Month == '6', ]) #1
+nrow(NS_date_21[NS_date_21$Month == '7', ]) #0
+nrow(NS_date_21[NS_date_21$Month == '8', ]) #0
+nrow(NS_date_21[NS_date_21$Month == '9', ]) #1
+nrow(NS_date_21[NS_date_21$Month == '10', ]) #11
+nrow(NS_date_21[NS_date_21$Month == '11', ]) #0
+
+#number of surveys per month in 2022 - BWS
+nrow(NS_date_22[NS_date_22$Month == '4', ]) #2
+nrow(NS_date_22[NS_date_22$Month == '5', ]) #2
+nrow(NS_date_22[NS_date_22$Month == '6', ]) #3
+nrow(NS_date_22[NS_date_22$Month == '7', ]) #3
+nrow(NS_date_22[NS_date_22$Month == '8', ]) #4
+nrow(NS_date_22[NS_date_22$Month == '9', ]) #4
+nrow(NS_date_22[NS_date_22$Month == '10', ]) #4
+nrow(NS_date_22[NS_date_22$Month == '11', ]) #0
+
+#Number of surveys per month 2021 - NS & DMS
+number_of_surveys_21 <- c(1,6,10,31,31,29,20,30,0,0,1,0,0,1,11,0)
+month1 <- c("April", "May", "June", "July", "August", "September", "October", "November")
+month  = factor(month1, levels=c("April", "May", "June", "July", "August", "September", "October", "November"))
+Dataset <- c("Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys")
+
+df_2021 =data.frame(number_of_surveys_21, month, Dataset)
+
+#Number of surveys per month 2022 - BWS & DMS
+number_of_surveys_22 <- c(0,23,30,22,13,28,30,10,2,2,3,3,4,4,4,0)
+month1 <- c("April", "May", "June", "July", "August", "September", "October", "November")
+month  = factor(month1, levels=c("April", "May", "June", "July", "August", "September", "October", "November"))
+Dataset <- c("Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys", "Night Surveys")
+
+df_2022 =data.frame(number_of_surveys_22, month, Dataset)
+
+```
+
+```{r search effort plot}
+
+#Search effort 2021
+png(filename = "figures/search_effort_2021.png", width = 2250, height = 1400, res = 300)
+ggplot(df_2021, aes(x=month, y=number_of_surveys_21, fill=Dataset)) +
+  theme_bw() +
+  ggtitle(label = "A") +
+  geom_bar(position = "dodge", stat = "identity", show.legend = FALSE) +
+  scale_fill_manual(values = c("black", "grey")) +
+  labs(x = "Month", y = "Number of surveys") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.text.x = element_text(colour = 'black', size = 10),
+        axis.text.y = element_text(colour = 'black', size = 10),
+        plot.title = element_text(hjust = -0.05))
+dev.off()
+
+#Search effort 2022
+png(filename = "figures/search_effort_2022.jpeg", width = 2250, height = 1400, res = 300)
+ggplot(df_2022, aes(x=month, y=number_of_surveys_22, fill=Dataset)) +
+  theme_bw() +
+  ggtitle(label = "B") +
+  geom_bar(position = "dodge", stat = "identity", show.legend = FALSE) +
+  scale_fill_manual(values = c("black", "grey")) +
+  labs(x = "Month", y = "Number of surveys") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.text.x = element_text(colour = 'black', size = 10),
+        axis.text.y = element_text(colour = 'black', size = 10),
+        plot.title = element_text(hjust = -0.05))
+dev.off()
+```
+
+```{r tailoring data - lighting schedule}
+
+#load data
+load("Data.Rda")
+load("Data_NS.Rda")
+
+#making vector for night surveys
+df <- rep(c("Night surveys"), 35)
+
+#changing wording of lights
+ID <- rownames(tb1)
+for(i in 1:length(ID)){
+  tb1$Lights[[i]] <- if(tb1$Plant_lights[[i]] %like% "On"){
+    print("on") }
+  else if(tb1$Plant_lights[[i]] %like% "Off"){
+    print("off") }
+  else {print("NA")}
+}
+
+#Tailoring to bind DMS + NS
+tb_bind <- select(tb1, Total_LESP_per_night, Lights, Date, yDate, Year) %>%
+  drop_na(Total_LESP_per_night) %>%
+  mutate(Survey_type = df) %>%
+  rename(Total_LESP = Total_LESP_per_night)
+  
+#making vector for morning surveys
+df <- rep(c("Morning surveys"), 285)
+
+#tailoring to bind DMS + NS
+data_bind <- select(data, Total_LESP, Lights, Date, yDate, Year) %>%
+  drop_na(Total_LESP, Lights) %>%
+  mutate(Survey_type = df)
+
+DMS_NS <- rbind(data_bind, tb_bind)
+DMS_NS$Survey_type <- as.factor(DMS_NS$Survey_type)
+DMS_NS$Date <- as.Date(DMS_NS$Date)
+
+#changing "off" to "reduced"
+DMS_NS <- DMS_NS %>%
+  mutate(across('Lights', str_replace, 'off', 'reduced'))
+```
+
+```{r lighting schedule plot}
+
+#2021 plot excluding 1 outlier
+#filter out 2022
+DMS_NS_2021 <- filter(DMS_NS, Year != 122) %>%
+  filter(Total_LESP < 1000)
+
+png(filename = "figures/lighting_schedule_2021.png", width = 2250, height = 1400, res = 300)
+ggplot(data = DMS_NS_2021, aes(x = Date, y = Total_LESP)) +
+  theme(axis.title = element_text(size = 9)) +
+  ggtitle(label = "A") +
+  geom_point(aes(shape = Survey_type, color = Lights)) +
+  xlab("Date") +
+  ylab("Number of Stranded Birds") +
+  scale_shape_manual(values = c("Morning surveys" = 15, "Night surveys" = 17)) +
+  scale_colour_manual(values = c("on" = "#414388FF", "reduced" = "#7ED7AFFF")) +
+  theme(panel.background = element_rect(fill = 'white', colour = 'black')) +
+  scale_x_date(date_labels="%b",date_breaks  ="1 month")
+dev.off()
+
+#2022 plot excluding 1 outlier
+#filter out 2021
+DMS_NSS_2022 <- filter(DMS_NS, Year != 121)
+
+png(filename = "figures/lighting_schedule_2022.png", width = 2250, height = 1400, res = 300)
+ggplot(data = DMS_NS_2022, aes(x = Date, y = Total_LESP)) +
+  theme(axis.title = element_text(size = 9)) +
+  ggtitle(label = "B") +
+  geom_point(aes(shape = Survey_type, color = Lights)) +
+  xlab("Date") +
+  ylab("Number of Stranded Birds") +
+  scale_shape_manual(values = c("Morning surveys" = 15, "Night surveys" = 17)) +
+  scale_colour_manual(values = c("on" = "#414388FF", "reduced" = "#7ED7AFFF")) +
+  theme(panel.background = element_rect(fill = 'white', colour = 'black')) +
+  scale_x_date(date_labels="%b",date_breaks  ="1 month")
+dev.off()
+
+```

@@ -58,7 +58,7 @@ ggplot(when, aes(y = Total_LESP, x = yDate)) +
 #line of smoothing intersect cut-off line at 268 and 301 = peak stranding period
 
 #final figure
-png(filename = "figures/peak_stranding_period_2021_2022.png", width = 16, height = 10, units = "cm", res = 600)
+png(filename = "figures/peak_stranding_period_2021_2022.png", width = 2000, height = 1250, res = 600)
 ggplot(when, aes(y = Total_LESP, x = yDate)) +
   annotate("rect", xmin = 269, xmax = 301, ymin = 0, ymax = 83.7, fill = alpha("grey", 0), colour = "black", linewidth = 0.7) +
   theme(axis.title = element_text(size = 9)) +

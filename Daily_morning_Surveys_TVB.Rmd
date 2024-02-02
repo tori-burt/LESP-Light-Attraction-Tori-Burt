@@ -1,0 +1,227 @@
+---
+title: "LESP_Light_Attraction_TVB"
+author: "Tori Burt"
+date: "2023-05-04"
+output: html_document
+---
+
+```{r loading packages}
+
+library(lme4) #run lme4 before lmerTest 
+library(lmerTest)
+library(glmmTMB)
+library(tidyverse)
+library(car)
+library(DHARMa)
+library(effects)
+library(ggeffects)
+library(conflicted)
+library(data.table)
+library(lubridate)
+
+conflict_prefer("select", "dplyr")
+conflict_prefer("filter", "dplyr")
+conflict_prefer("yday", "lubridate")
+
+```
+
+```{r tailoring data to analysis}
+
+#load data
+load("Data_DMS.Rda")
+
+#categorize wind to onshore and offshore based on tangent to coastline
+data_wind <- filter(data, WindSpeed != "NA") %>%
+  mutate(Wind.Direction = as.numeric(Wind.Direction) * 10) %>%
+  mutate(OnOffShore = ifelse(Wind.Direction < 166, "onshore", ifelse(Wind.Direction > 346, "onshore", "offshore")))
+
+#filter for year, observer, select correct columns, and drop NA
+l21_l22 <- data_wind %>%
+  select(Date, Lights, Lunar, Box, Total_LESP, yDate, Weather, Database, Year, WindSpeed, OnOffShore) %>%
+  drop_na(Total_LESP, Lights, Year, yDate, WindSpeed, OnOffShore) 
+
+#creating binary fog variable
+l21_l22$Weather <- gsub("no fog", "", l21_l22$Weather)
+
+#categorizing fog
+ID <- rownames(l21_l22)
+for(i in 1:length(ID)){
+  l21_l22$fog[[i]] <- if(l21_l22$Weather[[i]] %like% "fog"){
+    print("yes") }
+  else if(l21_l22$Weather[[i]] %like% "Fog"){
+    print("yes") }
+  else if(l21_l22$Weather[[i]] %like% "Foggy"){
+    print("yes") }
+  else {print("no")}
+}
+l21_l22$fog <- unlist(l21_l22$fog)
+l21_l22$fog <- as.factor(l21_l22$fog)
+
+#dropping NA in lunar and changing "off" to "reduced"
+l21_l22 <- l21_l22 %>% 
+  drop_na(Lunar) %>%
+  mutate(across('Lights', str_replace, 'off', 'reduced'))
+
+#removing dates where nightly surveys were conducted
+l21_l22 <- l21_l22 %>%
+  filter(Date != "2021-09-25", Date != "2021-06-25", Date != "2021-10-01", Date != "2022-05-04", Date != "2022-05-05", Date != "2022-06-01", Date != "2022-06-14", Date != "2022-06-30", Date != "2022-07-28", Date != "2022-08-11", Date != "2022-08-12", Date != "2022-09-09", Date != "2022-09-29", Date != "2022-09-30", Date != "2022-10-16", Date != "2022-10-20")
+
+```
+
+```{r modelling daily morning survey data}
+
+#check outliers
+boxplot(l21_l22$Total_LESP, ylab = "Number of Stranded Birds", xlab = "")
+
+#2 outliers
+
+#filter out outliers
+l21_l22outlier <- l21_l22 %>% filter(Total_LESP < 100)
+
+#visualize data
+hist(l21_l22$Total_LESP, breaks = 31)
+
+#lights boxplot
+boxplot(l21_l22$Total_LESP ~ l21_l22$Lights)
+boxplot(l21_l22outlier$Total_LESP ~ l21_l22outlier$Lights)
+
+#check for covariance
+my_vars <- l21_l22[, c("yDate", "Lunar", "WindSpeed")]
+
+cor(my_vars)
+
+plot(my_vars) #date and lunar have a cyclical relationship
+
+#lightsmod1 - linear model - poor fit
+mod1 <- lm(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22)
+
+#testing vif
+vif(mod1)
+
+#testing assumptions
+plot(mod1, ask = FALSE)
+
+#assumptions are violated
+
+#lightsmod2 - poisson distribution - poor fit
+mod2 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = poisson(link = "log"))
+
+assumptions <- simulateResiduals(fittedModel = mod2, plot = TRUE, refit = FALSE)
+
+#assumptions violated
+
+#testing zero inflation - significant 
+testZeroInflation(assumptions)
+
+#lightsmod3 - poisson with zero inflation formula - poor fit
+mod3 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = poisson(link = "log"), ziformula = ~1)
+
+assumptions <- simulateResiduals(fittedModel = mod3, plot = TRUE, refit = FALSE)
+
+#lightsmod4 - negative binomial distribution - overdispersed 
+mod4 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = nbinom1(link = "log"))
+
+#test assumptions
+simulatedOutput <- simulateResiduals(fittedModel = mod4, plot = TRUE, refit = FALSE) #overdispersed
+
+#check each variable
+plotResiduals(form = l21_l22$Lights, simulationOutput = simulatedOutput, asFactor = T) #variance significant
+plotResiduals(form = l21_l22$yDate, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$Lunar, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$WindSpeed, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$OnOffShore, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$fog, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$Year, simulationOutput = simulatedOutput, asFactor = T)
+
+#check zero inflation - not significant
+testZeroInflation(simulatedOutput)
+
+#lightsmod5 - negative binomial with dispersion formula - BEST FIT
+mod5 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = nbinom1(link = "log"), dispformula = ~OnOffShore)
+
+#test assumptions
+simulatedOutput <- simulateResiduals(fittedModel = mod5, plot = TRUE, refit = FALSE) 
+
+#testing dispersion - not significant, p = 0.32
+testDispersion(mod5)
+
+#testing zero inflation - not significant, p =1
+testZeroInflation(simulatedOutput)
+
+#check each variable
+plotResiduals(form = l21_l22$Lights, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$yDate, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$Lunar, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$WindSpeed, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22$OnOffShore, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$fog, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22$Year, simulationOutput = simulatedOutput, asFactor = T)
+
+#results
+Anova(mod5)
+summary(mod5)
+ae <- allEffects(mod5)
+plot(ae)
+confint(mod5, parm = NULL, level = 0.95, method = "wald")
+
+#lightsmod6 - negative binomial excluding outliers with dispersion formula
+mod6 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22outlier, family = nbinom1(link = "log"), dispformula = ~OnOffShore)
+
+#test assumptions
+simulatedOutput <- simulateResiduals(fittedModel = mod6, plot = TRUE, refit = FALSE)
+
+#check each variable
+plotResiduals(form = l21_l22outlier$Lights, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$yDate, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22outlier$Lunar, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22outlier$WindSpeed, simulationOutput = simulatedOutput)
+plotResiduals(form = l21_l22outlier$OnOffShore, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$fog, simulationOutput = simulatedOutput, asFactor = T)
+plotResiduals(form = l21_l22outlier$Year, simulationOutput = simulatedOutput, asFactor = T)
+
+#results
+Anova(mod6)
+summary(mod6)
+
+#inferences did not change in a biologically relevant way - outliers will not be excluded
+
+```
+
+```{r figure construction}
+
+#effects plot
+effect <- ggpredict(mod5, terms = "Lights")
+lights_df <- as.data.frame(effect)
+png(filename = "Figures/effect_light_2021_2022_DMS_TVB.png", width = 2000, height = 1538, res = 600)
+plt <- ggplot(data = lights_df, aes(x = x, ymin = 0, ymax = 5)) +
+  theme(axis.title = element_text(size = 9)) +
+  geom_line(aes(y = predicted, group = 2)) +
+  geom_point(aes(y = predicted, x = x)) +
+  labs(x="Lighting Condition", y="Predicted Counts of Stranded Birds") +
+  theme(panel.background = element_rect(fill = 'white', colour = 'black')) +
+  geom_text(x = 1, y = 1.70, label = "1.40", size = 3) +
+  geom_text(x = 2, y = 2.75, label = "2.46", size = 3)
+plt + geom_ribbon(aes(x = 1:length(x), ymin = conf.low, ymax = conf.high), alpha =.2) 
+dev.off()
+
+```
+
+```{r mean birds per night for 2021 and 2022}
+
+#mean number of birds stranded per night - 2021
+l21_l22_mean_21 <- l21_l22 %>%
+  filter(Year != 122)
+
+mean(l21_l22_mean_21$Total_LESP) #5.560 birds per night
+sd(l21_l22_mean_21$Total_LESP) #27.259 
+
+#mean number of birds stranded per night - 2022
+l21_l22_mean_22 <- l21_l22 %>%
+  filter(Year != 121)
+
+mean(l21_l22_mean_22$Total_LESP) #4.371 birds per night
+sd(l21_l22_mean_22$Total_LESP) #33.91
+
+
+```
+

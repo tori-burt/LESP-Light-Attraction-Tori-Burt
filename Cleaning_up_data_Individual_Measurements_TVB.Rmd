@@ -1,0 +1,38 @@
+---
+title: "Cleaning_up_data_Individual_Measurements_TVB"
+author: "Tori Burt"
+date: "2023-08-31"
+output: html_document
+---
+
+```{r loading packages}
+
+library(dplyr)
+library(tidyverse)
+library(zoo)
+
+```
+
+```{r cleaning up data}
+
+#load data
+M22 <- read.csv("data/Indv_Measurements_22_TVB_2023_08_24.csv", na.strings=c("","NA"))
+
+#classify variables
+M22$Bag_weight <- as.numeric(M22$Bag_weight)
+M22$Actual_weight <- as.numeric(M22$Bag_bird_weight)
+M22$Wing_length <- as.numeric(M22$Wing_length)
+
+#subtract bag weight from bird + bag weight
+M22_weight <- M22 %>%
+  mutate(Bird_weight = Bag_bird_weight - Bag_weight)
+
+#classify bird weight
+M22_weight$Bird_weight <- as.numeric(M22_weight$Bird_weight)
+
+#select variables
+data_M22 <- select(M22_weight, Date, Time, Bird_weight, Breeding_status, Age, Alive_dead, Wing_length)
+
+#save the data file
+save(data_M22, file = "Data_IM.Rda")
+```

@@ -1,0 +1,145 @@
+Date,Time,Plant_lights,Wharf lights,Total_LESP_per_round,Total_LESP_per_night,# of live adults,# of dead adults,# of live breeding adults,# of dead breeding adults,# of live non breeders,# of dead non breeders,# of live juveniles,# of dead juveniles,Location of birds?,# of gulls,# of cats,"# other predators , please list",Weather_Conditions,Lunar,Wind_Speed,Wind_Direction,# of boats,"Time of boats arrival (24 hr time, please list with comma in between)",Size of vessel (ft) (please list with comma in between),Type of lighting on boats (please list with comma in between and specify ON/OFF),Notes,Ref,Weather Coding
+06/25/2021,,Off,On,8,8,6,2,,,,,,,,,,,0,100,50,26,,,,,"Not collected by Tori. Observer was Robert Blackmore, Sydney Collins, and Bill Montevecchi",,
+09/25/2021,,On,On,40,40,15,1,,,,,22,2,,,,,0,83,34,25,,,,,"Not collected by Tori. Observer was Bill Montevecchi, Mohammad Fahmy, and Juliana Coffey",,
+10/01/2021,,Off,On,443,443,,,,,,,,,,,,,6,28,NA,NA,,,,,Not collected by Tori. Observers were Taylor Brown and Juliana Coffey,,
+10/02/2021,8:00 PM,On,On,0,138,0,0,0,0,0,0,0,0,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro",,
+10/02/2021,8:30 PM,On,On,0,,0,0,0,0,0,0,0,0,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro",,
+10/02/2021,10:00 PM,On,On,47,,2,0,,,,,40,5,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro",,
+10/02/2021,11:30 PM,On,On,24,,2,0,,,,,17,5,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro",,
+10/03/2021,12:00 AM,On,On,10,,3,0,,,,,7,0,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro",,
+10/03/2021,12:30 AM,On,On,13,,1,0,,,,,11,1,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro",,
+10/03/2021,1:00 AM,On,On,11,,1,0,,,,,9,1,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro",,
+10/03/2021,2:00 AM,On,On,10,,0,0,,,,,8,2,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro. Obs from truck only.",,
+10/03/2021,2:30 AM,On,On,16,,4,0,,,,,12,0,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro. LESP rescued from front of the building only",,
+10/03/2021,3:00 AM,On,On,7,,1,0,,,,,6,0,,,1,,0,19,42,26,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro. Saw about 5 get eaten by gulls.",,
+10/03/2021,,On,On,1100,1100,0,0,,,,,1030,70,,,1,,1,11,35,5,,,,,"Not collected by Tori. Observers were Taylor Brown, Juliana Coffey, Robert Blackmore, and Fiona Le Taro. Fishplant lights were eventually turned off.",,
+10/04/2021,,Off,On,108,108,,,,,,,,,,,1,,1,5,55,33,,,,,"Not collected by Tori. Observers were Taylor and Juliana and Mohammad. Note: numerous birds collected this morning and evening (n=36) believed to be from previous night strandings; morning strandings were also collected with Sabina + Chris. Weather data not available, estimated from St. John's",9 pm October 4 2021 custom weather data,
+10/05/2021,,Off,On,49,49,,,,,,,,,,,2,,1,1,63,34,,,,,"12 dead. Not collected by Tori. Observers were Taylor and Juliana and Mohammad. Note: 2 live birds seem from last night emerging from crevices and captured at 8PM.  added 2 to 10/04 2 live birds retrieved from Sherri's boxes at 9PM. added 2 to 10/05. Weather data not available, estimated from St. John's",9 pm October 5 2021 custom weather data,
+10/06/2021,,NA,On,20,20,,,,,,,,,,,,,0,0,49,25,,,,,"Estimate. Not collected by Tori. Observers were Taylor and Juliana. Note: the 10 birds are ones that were involved in the experiments; several others were also recovered but no total recorded (less than 15 additional); no info recorded on dead birds Added 12. Weather data not available, estimated from St. John's",9 pm October 6 2021 custom weather data,
+10/07/2021,,NA,On,20,20,,,,,,,,,,,,,1,0,44,34,,,,,"Estimate. Not collected by Tori. Observers were Taylor and Juliana. Note: the 10 birds are ones that were involved in the experiments; several others were also recovered but no total recorded (less than 15 additional); no info recorded on dead birds; this night the light at the loading dock on back was turned off added 10. Weather data not available, estimated from St. John's",9 pm October 7 2021 custom weather data,
+10/08/2021,,Off,On,5,5,,,,,,,,,,,,,1,7,122,2,,,,,"Not collected by Tori. Observers were Taylor and Juliana. observers did an initial check around fish plant but called off due to extreme weather. Weather data not available, estimated from St. John's",9 pm October 8 2021 custom weather data,
+10/09/2021,,Off,On,5,5,,,,,,,,,,,,,1,15,114,3,,,,,"Not collected by Tori. Observers were Taylor and Juliana. observers did an initial check around fish plant but called off due to extreme weather; note that the 3 dead LESP were found in the morning and would have perished overnight on the 8-9th. Weather data not available, estimated from St. John's",9 pm October 9 2021 custom weather data,
+10/10/2021,,Off,On,9,9,,,,,,,,,,,1,,0,25,67,3,,,,,"Not collected by Tori. Observers were Taylor and Juliana. observation period 10pm-3am; fish plant lights off, harbour lights on; note that observers were doing experiments and not full-time searching; J. Coffey has the time distribution of birds found. Weather data not available, estimated from St. John's",9 pm October 10 2021 custom weather data,
+10/11/2021,,Off,On,25,25,,,,,,,,,,,,,1,36,36,34,,,,,"Not collected by Tori. Observers were Taylor and Juliana. observation period 9pm-3am; fish plant lights off, harbour lights on; note that observers were doing experiments and not full-time searching; gulls were able to predate at least 2 that were observed by researchers unable to get to the in time; several more may have been predated while researchers were busy doing experiments; J. Coffey has the time distribution of birds found as well as age class (both juv and adults recovered); more birds were seen flying (primarily around the wharf lights) that did not get stranded. Weather data not available, estimated from St. John's",9 pm October 11 2021 custom weather data,
+04/20/2022,23:50,Off,On,0,0,,,,,,,,,NA,1500,0,2 otters,"1
+5",84,87,18,0,,,,,,
+04/20/2022,22:01,On,On,0,,,,,,,,,,NA,1500,0,,"1
+4",84,87,18,0,,,,1 common murre,,
+04/21/2022,0:32,Off,On,0,0,,,,,,,,,NA,1500,0,,"1
+5",74.1,NA,NA,1,,,,,,
+05/04/2022,23:59,Off,On,0,0,0,0,0,0,0,0,0,0,NA,170,0,0,0,13.9,34,20,0,,,,"Weather was not available, used weather from same night",,
+05/04/2022,21:48,Off,On,0,,0,0,0,0,0,0,0,0,NA,146,0,0,0,13.9,34,20,0,,,,"Weather was not available, used weather from same night",,
+05/04/2022,23:01,Off,On,0,,0,0,0,0,0,0,0,0,NA,170,0,0,0,13.9,34,20,0,,,,"1 thick-billed murre, conservative estimate of gulls 170+",,
+05/18/2022,23:09,Off,On,0,0,0,0,0,0,0,0,0,0,NA,140,1,0,0,93.8,93,18,0,,,,"2 LESP seen flying over rock wall, back lights on",11 pm May 18 custom weather data,
+05/18/2022,21:59,Off,On,0,,0,0,0,0,0,0,0,0,NA,,0,0,0,93.8,93,18,1,21:37,32,LED on,Back lights left on,10 pm May 18 custom weather data,
+05/19/2022,0:00,Off,On,0,,0,0,0,0,0,0,0,0,NA,,0,O,0,86.3,52,24,0,,,,"Two LESP spotted over rock wall flying, back plant lights still on",12 am May 19 custom weather dats,
+06/01/2022,21:33,On,On,0,4,0,0,0,0,0,0,0,0,NA,400,0,0,"1
+4",4.6,50,2,0,,,,"230 predatory gulls, rest were not predatory",,
+06/01/2022,23:34,On,On,0,,0,0,0,0,0,0,0,0,NA,135,0,0,5,4.6,50,2,1,22:39,80,On not LED,Saw about 6 flying around the plant but none stranded,,
+06/02/2022,4:39,On,On,0,,0,0,0,0,0,0,0,0,NA,140,0,0,"1
+5",9.6,64,3,1,,,,Conservative gull estimate,,
+06/02/2022,1:56,On,On,2,,2,0,0,0,2,0,0,0,Front of fish plant,,0,0,"1
+5",9.6,64,3,0,,,,1 bird had a bloodied nose,,
+06/02/2022,1:05,On,On,1,,1,0,0,0,1,0,0,0,Back of fish plant,270,0,0,"1
+5",9.6,64,3,0,,,,"5 flying around, bag weight was 19",,
+06/02/2022,3:13,On,On,1,,1,0,1,0,0,0,0,0,Wharf,135,0,0,"1
+4",9.6,64,3,0,,,,Conservative gull estimate,,
+06/13/2022,22:33,Off,On,0,15,0,0,0,0,0,0,0,0,NA,200,0,0,0,Moon does not pass the meridan on this day,44,20,0,,,,"1 dead petrel half eaten, conservative gull estimate",11 pm June 13 custom weather data,
+06/13/2022,23:32,Off,On,1,,1,0,0,0,1,0,0,0,Out building,,2,0,3,Moon does not pass the meridan on this day,44,20,1,,80,ON,Tons of petrels flying around light on outbuilding,12 am June 14 custom weather data,
+06/14/2022,1:03,Off,On,8,,6,2,3,1,2,,0,0,"Front of fish plant
+Out building
+Wharf",,2,,3,99.8,NA,NA,,,,,"1 was carried away by cat, 1 escaped",1 am June 14 custom weather data,
+06/14/2022,2:02,Off,On,5,,4,1,2,1,2,0,0,0,"Front of fish plant
+Out building",3,,,3,99.8,NA,NA,,,,,1 gull was swallowing petrel but unsure if previously dead or not,2 am June 14 custom weather data,
+06/14/2022,3:39,Off,On,0,,0,0,0,0,0,0,0,0,NA,,,,2,99.8,NA,NA,1,3:20 AM,65+,ON,,,
+06/14/2022,3:15,Off,On,1,,2,0,1,0,,0,0,0,Front of fish plant,2,2,,2,99.8,NA,NA,,,,,"2 gulls preying on petrel, 1 escaped, dead dovekie (non-breeding), weather data not available, used same night weather conditions from 3:39",,
+06/29/2022,23:07,On,On,1,26,0,1,0,,0,,0,0,Back of fish plant,1,0,None,1,0.4,50,25,0,,,,"Dead lesp old and deteriorated
+Same Dovekie from the 13th thrown away. No weather data so estimated from St. John's weather",11 pm June 29 custom weather data,
+06/30/2022,3:57,On,On,0,,,,,,,,,,NA,1,0,,3,2.4,35,15,0,,,,no weather data available so estimated from st. john's weather,4 am June 30 custom weather data,
+06/30/2022,3:17,On,On,2,,2,0,1,0,1,0,0,0,Front of fish plant,1,0,,1,2.4,35,15,0,,,,no weather data available so estimated from st. john's weather,3 am June 30 custom weather data,
+06/30/2022,0:57,On,On,6,,5,0,1,0,3,0,0,0,"Front of fish plant
+Loading dock",0,0,,0,2.4,35,15,0,,,,two birds escaped capture. No weather data available so estimated from st johns weather, 1 am June 30 custom weather data,
+06/30/2022,2:20,On,On,1,,1,0,0,0,1,0,0,0,Front of fish plant,0,1,,0,2.4,35,15,,,,,no weather data available so estimated from st. john's weather, 2 am June 30 custom weather data,
+06/30/2022,1:51,On,On,12,,12,0,1,0,9,0,0,0,Front of fish plant,0,2,,0,2.4,35,15,0,,,,no weather data available so estimated from st. john's weather, 2 am June 30 custom weather data,
+06/30/2022,2:56,On,On,3,,3,0,,0,2,0,0,0,Front of fish plant,1,0,,1,2.4,35,15,0,,,,no weather data available so estimated from st. john's weather, 3 am June 30 custom weather data,
+06/30/2022,0:04,On,On,1,,1,0,0,0,1,0,0,0,Front of fish plant,0,2,None,0,2.4,35,15,0,,,,no weather data available so estimated from st. john's weather, 1 am June 30 custom weather data,
+07/13/2022,23:36,On,On,0,4,0,0,0,0,0,0,0,0,NA,3,1,,1,99.2,55,24,0,,,,"2 flying around, one hit the plant but took off when approached",,
+07/13/2022,22:16,On,On,0,,0,0,0,0,0,0,0,0,NA,0,0,,1,99.2,55,24,0,,,,,,
+07/14/2022,2:21,On,On,3,,3,0,1,0,2,0,0,0,Front of fish plant,4,2,,2,99.2,50,18,0,,,,,,
+07/14/2022,0:32,On,On,0,,0,0,0,0,0,0,0,0,NA,2,1,,1,99.2,50,18,0,,,,"1 flying, hit wall but flew away when Ed tried to pick up",,
+07/14/2022,3:18,On,On,1,,0,1,0,,0,,0,0,Front of fish plant,1,2,,2,99.2,50,18,,,,,Dead bird had been dead for some time found in rat trap,,
+07/27/2022,22:07,On,On,0,33,,,,,,,,,NA,3,1,,1,1.3,48,23,0,,,,"Weather data not available, used weather from same night at 02:11",,
+07/27/2022,23:27,On,On,1,,1,0,1,0,0,0,0,0,Front of fish plant,0,1,,1,1.3,48,23,0,,,,"Weather data not available, used weather from same night at 02:11",,
+07/28/2022,23:19,Off,On,1,4,1,0,1,0,0,0,0,0,Front of fish plant,0,3,0,1,0.2,38,3,0,,,,Bird likely had a concussion,,
+07/28/2022,22:25,Off,On,1,,1,0,0,0,1,0,0,0,Loading dock,0,0,,1,0.2,38,3,0,,,,Seemingly there since the night before,,
+07/28/2022,3:46,On,On,2,,2,0,0,0,2,0,0,0,Front of fish plant,0,0,,1,0.2,38,3,2,"03:27, 03:39","65, 65","LED on, on",,,
+07/28/2022,0:40,On,On,13,,13,0,6,0,7,0,0,0,Front of fish plant,0,2,,1,0.2,38,3,0,,,,"3 old carcasses, accidentally wrote breeding info twice in sheet double check, weather data not available, used weather from closest time from same night at 02:11",,
+07/28/2022,2:11,On,On,17,,17,0,11,0,4,0,0,0,Front of fish plant,0,1,,1,0.2,38,3,0,,,,"1 carcass old, 2 escaped",,
+07/29/2022,1:44,Off,On,0,,0,0,0,0,0,0,0,0,NA,0,2,0,1,1,32,19,0,,,,,,
+07/29/2022,0:51,Off,On,2,,2,0,0,0,1,0,0,0,Front of fish plant,0,0,,1,1,32,19,0,,,,,,
+08/10/2022,23:41,Off,On,0,1,0,0,0,0,0,0,0,0,NA,2,,,1,Moon does not pass the meridan on this day,56,8,0,,,,Started staying for 2 nights,,
+08/10/2022,22:32,Off,On,1,,1,0,0,0,1,0,0,0,Front of fish plant,0,2,,"1
+4",Moon does not pass the meridan on this day,56,8,0,,,,Found in fish tub?,,
+08/11/2022,22:04,Off,On,0,0,0,0,0,0,0,0,8,0,NA,1,0,,1,98.5,31,19,0,,,,No one working at the plant so lights were off,,
+08/11/2022,23:11,Off,On,0,,0,0,0,0,0,0,0,0,NA,1,1,,1,98.5,31,19,0,,,,"Weather data not available, used weather from same night 22:04",,
+08/11/2022,0:34,Off,On,0,,0,0,0,0,0,0,0,0,NA,0,1,,"1
+4",98.5,31,19,0,,,,,,
+08/12/2022,0:31,Off,On,0,,0,0,0,0,0,0,0,0,NA,1,0,0,1,99.8,42,17,0,,,,"Weather data not available, used weather from same night 22:04",,
+08/24/2022,21:00,Off,On,1,9,1,0,,0,,0,0,0,Front of fish plant,21,1,,1,7.4,71,16,0,,,,,,
+08/24/2022,23:02,Off,On,0,,0,0,0,0,0,0,0,0,NA,13,1,0,1,7.4,71,16,0,,,,,,
+08/25/2022,21:06,On,On,0,52,0,0,0,0,0,0,0,0,NA,60,0,0,1,3.1,51,25,0,,,,"Time estimated, released bird from night before.",,
+08/25/2022,2:49,Off,On,2,,1,1,0,1,1,0,0,0,"Back of fish plant
+Out building",11,0,0,1,3.1,51,25,0,,,,,,
+08/25/2022,0:30,Off,On,2,,2,0,2,0,0,0,0,0,Front of fish plant,10,1,0,1,3.1,51,25,0,,,,,,
+08/25/2022,1:38,Off,On,4,,4,0,1,0,3,0,0,0,Front of fish plant,12,0,0,1,3.1,51,25,0,,,,1 bird found by shed close to car,,
+08/25/2022,23:57,On,On,34,,34,0,19,0,15,0,0,0,"Front of fish plant
+Back of fish plant
+Out building",6,0,0,1,3.1,51,25,0,,,,,,
+08/26/2022,4:36,On,On,1,,1,0,1,0,0,0,0,0,Front of fish plant,4,0,0,1,0.7,34,25,0,,,,,,
+08/26/2022,1:23,On,On,9,,9,0,5,0,4,0,0,0,"Front of fish plant
+Wharf",,0,,1,0.7,34,25,0,,,,"No weather data available, chose weather conditions closest to time",,
+08/26/2022,3:49,On,On,4,,4,0,2,0,2,0,0,0,Front of fish plant,5,1,,1,0.7,34,25,0,,,,"Dead murre (unknown species due to deterioration) found floating in harbour, no weather data available, used weather from closest time of night",,
+08/26/2022,2:21,On,On,4,,4,0,4,0,0,0,0,0,Front of fish plant,4,1,,1,0.7,34,25,0,,,,"No weather data available, chose weather conditions closest to time",,
+09/08/2022,23:28,On,Off,0,0,,,,,,,,,NA,47,1,,1,Moon does not pass the meridan on this day,54,2,0,,,,,,
+09/08/2022,21:27,Off,On,0,,,,,,,,,,NA,87,0,,1,Moon does not pass the meridan on this day,54,2,0,,,,"15 old carcasses, very bright moon",,
+09/09/2022,1:27,Off,On,0,,,,,,,,,,NA,71,1,,1,97.5,36,5,0,,,,"Moon super bright, no weather data available but used data from closest time",,
+09/13/2022,21:30,Off,On,1,39,0,0,0,0,0,0,0,1,NA,,,,0,97.5,54,2,,,,,LESP dead by gull,,
+09/13/2022,22:10,Off,On,5,,0,0,0,0,0,0,3,2,NA,,,,0,97.5,54,2,,,,,2 dead by neck break,,
+09/14/2022,0:40,Off,On,12,,0,0,0,0,0,0,12,0,NA,,,,0,83,35,34,,,,,,,
+09/14/2022,1:10,Off,On,3,,0,0,0,0,0,0,3,0,NA,25,0,0,0,83,35,34,1,,,,Boat in harbour,,
+09/14/2022,2:20,Off,On,15,,,,,,,,8,,NA,,,,0,83,35,34,,,,,,,
+09/14/2022,3:45,Off,On,3,,,,,,,,2,,NA,,,,0,83,35,34,,,,,"Stopped at 3:45, all Sherry's boxes empty",,
+09/28/2022,22:31,Off,On,0,0,0,0,0,0,0,0,0,0,NA,13,0,0,"1
+6",9,60,19,0,,,,,,
+09/29/2022,21:20,On,On,0,10,0,0,0,0,0,0,0,0,NA,7,0,0,1,16.6,NA,NA,0,,,,2 flying around when we arrived then dissapeared. Can't tell if it's cloudy or not but no rain. No weather data available so used WC from same night,,
+09/29/2022,23:02,On,On,1,,1,0,,,,,0,0,Front of fish plant,16,1,0,1,16.6,NA,NA,,,,,"No longer distinguishing breeding\nb, no weather data available used WC from same night dif time (fog and cloud cover)",,
+09/29/2022,1:21,Off,On,0,,0,0,0,0,0,0,0,0,NA,31,0,0,"5
+6",16.6,NA,NA,0,,,,,,
+09/29/2022,0:34,Off,On,0,,0,0,0,0,0,0,0,0,NA,30,0,0,"4
+6",16.6,NA,NA,0,,,,,,
+09/30/2022,3:03,On,On,2,,2,0,2,0,0,0,0,0,Front of fish plant,3,1,0,1,26.1,48,35,0,,,,"No weather data available, used WC from same night dif time (fog and cloud cover data)",,
+09/30/2022,0:15,On,On,2,,1,1,,,,,0,0,Front of fish plant,14,0,0,1,26.1,48,35,0,,,,"Saw petrel get taken by gull , live bird was injured but released fine",,
+09/30/2022,2:01,On,On,5,,4,0,3,,,,0,1,"Front of fish plant
+Loading dock",9,0,0,1,26.1,48,35,1,1:39,,LED,"Name of boat was covenant, no petrels seen around it. Dead bird was likely a juvenile but unsure bc it was not obvious, no weather data available, used weather from same night (fog and cloud cover)",,
+10/14/2022,20:32,Off,On,5,5,0,,,,,,0,3,"Front of fish plant
+Loading dock",2,0,0,1,80.6,32,26,0,,,,"4\5 dead birds found were decapitated, possible mink (S.G. saw a mink earlier this year). No weather data so estimated from St. John's weather",9 pm October 14 custom weather data,
+10/14/2022,23:40,Off,On,0,,0,0,0,0,0,0,0,0,NA,1,0,,3,80.6,32,26,0,,,,No weather data so estimated from st johns weather,12 am October 15 custom weather data,
+10/15/2022,1:03,Off,On,0,,0,0,0,0,0,0,0,0,NA,8,0,0,3,72.1,32,27,0,,,,No weather data so estimated from st johns weather,1 am October 15 custom weather data,
+10/16/2022,4:15,On,On,5,188,0,0,,,,,5,0,Front of fish plant,8,1,0,1,62.8,67,14,0,,,,,,
+10/16/2022,2:03,On,On,170,,41,,,,,,115,,"Front of fish plant
+Back of fish plant
+Loading dock",8,4,0,1,62.8,67,14,0,,,,"11 dead but age unknown, 2 alive of unknown age. Many (50-100) hit and flew away. 1 injured lower mandible broken, later died of injury",,
+10/16/2022,3:19,On,On,13,,1,,,,,,10,,"Front of fish plant
+Loading dock",7,0,0,1,62.8,67,14,0,,,,"2 dead, decapitated. Not aged",,
+10/19/2022,22:40,Off,On,17,147,,,,,,,17,,NA,,,,1,33.8,44,16,,,,,weather conditions estimated from St. John's weather station,11 pm October 19 custom weather data,
+10/19/2022,23:25,Off,On,22,,,,,,,,22,,NA,,,,1,33.8,44,16,,,,,weather conditions estimated from St. John's weather station,11 pm October 19 custom weather data,
+10/19/2022,22:10,Off,On,40,,,,,,,,40,,NA,,,,1,33.8,44,16,,,,,weather conditions estimated from St. John's weather station,10 pm October 19 custom weather data,
+10/19/2022,21:20,Off,On,11,,0,,,,,,11,,NA,,,,1,33.8,44,16,,,,,Total number of dead birds was 20-30. Observer was Fiona Le Taro. Time was approximate. Weather conditions estimated from St. John's weather data,9 pm October 19 custom weather data,
+10/20/2022,23:30,Off,On,9,53,,,,,,,9,,NA,,,,1,24.7,70,21,,,,,Half of birds were in concrete blocks,11 pm October 20 custom weather data,
+10/20/2022,22:00,Off,On,16,,,,,,,,16,,NA,,,,1,24.7,70,21,,,,,weather conditions estimated from St. John's weather station,10 pm October 20 custom weather data,
+10/20/2022,21:20,Off,On,26,,1,,,,,,25,,NA,,,,1,24.7,70,21,,,,,weather conditions estimated from St. John's weather station,9 pm October 20 custom weather data,
+10/20/2022,4:50,Off,On,12,,,,,,,,12,,NA,,,,1,24.7,70,21,,,,,weather conditions estimated from St. John's weather station,5 am October 20 custom weather data,
+10/20/2022,3:45,Off,On,12,,,,,,,,12,,NA,,,,1,24.7,70,21,,,,,weather conditions estimated from St. John's weather station,6 am October 20 https://www.timeanddate.com/weather/canada/st-johns/historic?month=10&year=2022,
+10/20/2022,3:10,Off,On,15,,1,,,,,,14,,NA,,,,1,24.7,70,21,,,,,weather conditions estimated from St. John's weather station,6 am October 20 https://www.timeanddate.com/weather/canada/st-johns/historic?month=10&year=2022,
+10/20/2022,2:30,Off,On,18,,1,,,,,,17,,NA,,,,1,24.7,70,21,,,,,weather conditions estimated from St. John's weather station,12 am October 20 https://www.timeanddate.com/weather/canada/st-johns/historic?month=10&year=2022,
+10/21/2022,1:35,Off,On,2,,1,,1,,,,1,,NA,,,,1,16.5,43,26,,,,,"1 dead bird, weather conditions estimated from St. John's weather station",12 am October 21 https://www.timeanddate.com/weather/canada/st-johns/historic?month=10&year=2022,

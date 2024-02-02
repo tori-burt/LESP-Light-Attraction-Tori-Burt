@@ -1,0 +1,68 @@
+---
+title: "Individual_Measurements_TVB"
+author: "Tori Burt"
+date: "2023-08-25"
+output: html_document
+---
+
+```{r loading packages}
+
+library(dplyr)
+library(tidyverse)
+library(zoo)
+
+```
+
+```{r Individual measurements}
+
+#load data
+load("Data_IM.Rda")
+
+#dropping na and filtering for adults
+data_M22_weight_ad <- data_M22 %>%
+ drop_na(Bird_weight) %>%
+  filter(Age != "Juv")
+
+#mean adult weight and SD
+mean(data_M22_weight_ad$Bird_weight) #mean - 41.82 g
+sd(data_M22_weight_ad$Bird_weight) #SD - 11.11 g
+
+#dropping na and filtering for juveniles
+data_M22_weight_juv <- data_M22 %>%
+ drop_na(Bird_weight) %>%
+  filter(Age != "Ad")
+
+#mean juvenile weight
+mean(data_M22_weight_juv$Bird_weight) #mean - 45.54 g
+sd(data_M22_weight_juv$Bird_weight) #SD - 6.89 g
+
+#dropping na and filtering for adults
+data_M22_wing_ad <- data_M22 %>%
+  drop_na(Wing_length) %>%
+  filter(Age != "Juv")
+
+#mean adult wing length and SD
+mean(data_M22_wing_ad$Wing_length) #mean - 160.21 mm
+sd(data_M22_wing_ad$Wing_length) #SD - 3.58 mm
+
+#dropping na and filtering for juveniles
+data_M22_wing_juv <- data_M22 %>%
+  drop_na(Wing_length) %>%
+  filter(Age != "Ad")
+
+#mean adult wing length 
+mean(data_M22_wing_juv$Wing_length) #mean - 159.00 mm
+sd(data_M22_wing_juv$Wing_length) #SD - 3.27 mm
+
+#drop na and filter for breeding
+data_M22_breeding <- data_M22 %>%
+  drop_na(Breeding_status) %>%
+  filter(Breeding_status == "Breeding") #59 breeding
+
+#drop na and filter for non-breeding
+data_M22_nonbreeding <- data_M22 %>%
+  drop_na(Breeding_status) %>%
+  filter(Breeding_status == "Non-breeding") #43 non-breeding
+
+```
+
