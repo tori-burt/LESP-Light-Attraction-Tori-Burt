@@ -1,2 +1,6 @@
 # LESP-Light-Attraction-Tori-Burt
-Code for analyzing light attraction experiment at the Bay de Verde Fish Plant
+
+This code was used to analyze the data for the paper "Reduction in Coastal Lighting Decreases Seabird Strandings."
+
+Authors: Tori V. Burt, Sydney M. Collins, Sherry Green, Parker B. Doiron, Sabina I. Wilhelm, and William A. Montevecchi
+
