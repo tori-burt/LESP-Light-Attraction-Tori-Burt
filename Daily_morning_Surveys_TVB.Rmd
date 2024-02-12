@@ -60,7 +60,9 @@ l21_l22$fog <- as.factor(l21_l22$fog)
 #dropping NA in lunar and changing "off" to "reduced"
 l21_l22 <- l21_l22 %>% 
   drop_na(Lunar) %>%
-  mutate(across('Lights', str_replace, 'off', 'reduced'))
+  mutate(across('Lights', str_replace, 'off', 'Reduced')) %>%
+  mutate(across('Lights', str_replace, 'on', 'On'))
+l21_l22$Lights <- as.factor(l21_l22$Lights)
 
 #removing dates where nightly surveys were conducted
 l21_l22 <- l21_l22 %>%
@@ -137,6 +139,7 @@ plotResiduals(form = l21_l22$Year, simulationOutput = simulatedOutput, asFactor 
 testZeroInflation(simulatedOutput)
 
 #lightsmod5 - negative binomial with dispersion formula - BEST FIT
+l21_l22 <- within(l21_l22, Lights <- relevel(Lights, ref = "On"))
 mod5 <- glmmTMB(Total_LESP ~ Lunar + yDate + Lights + WindSpeed + OnOffShore + fog + Year, data = l21_l22, family = nbinom1(link = "log"), dispformula = ~OnOffShore)
 
 #test assumptions
@@ -199,8 +202,8 @@ plt <- ggplot(data = lights_df, aes(x = x, ymin = 0, ymax = 5)) +
   geom_point(aes(y = predicted, x = x)) +
   labs(x="Lighting Condition", y="Predicted Counts of Stranded Birds") +
   theme(panel.background = element_rect(fill = 'white', colour = 'black')) +
-  geom_text(x = 1, y = 1.70, label = "1.40", size = 3) +
-  geom_text(x = 2, y = 2.75, label = "2.46", size = 3)
+  geom_text(x = 1, y = 2.75, label = "1.40", size = 3) +
+  geom_text(x = 2, y = 1.70, label = "2.46", size = 3)
 plt + geom_ribbon(aes(x = 1:length(x), ymin = conf.low, ymax = conf.high), alpha =.2) 
 dev.off()
 

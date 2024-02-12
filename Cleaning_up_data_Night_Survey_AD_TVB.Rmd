@@ -78,7 +78,7 @@ tb1 <- tb1 %>% arrange(Date, Time) %>%
 tb1$Plant_lights <- as.factor(tb1$Plant_lights)
 
 #select for columns of interest
-tb1_ad <- select(tb1, Date, Time, Plant_lights, Total_ad_LESP_per_night, Fog_Cat, CloudCover_Cat, yDate, Month, Lunar, Year, Wind_Speed, Wind_Direction)
+tb1_ad <- select(tb1, Date, Time, Plant_lights, Total_ad_LESP_per_night, CloudCover_Cat, yDate, Month, Lunar, Year, Wind_Speed, Wind_Direction)
 
 #save the data file
 save(tb1_ad, file = "Data_Night_survey_ad.Rda")

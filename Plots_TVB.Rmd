@@ -22,7 +22,7 @@ conflicts_prefer(dplyr::filter)
 
 ```
 
-```{r bdv map}
+```{r Fig 1 - bdv map}
 
 #import NL shape file
 nl.map <- st_read(file.path("gpr_000b11a_e/gpr_000b11a_e.shp")) 
@@ -91,45 +91,10 @@ ggarrange(map1, map2)
 dev.off()
 ```
 
-```{r Onshore Offshore Plot}
-
-png(filename = "figures/Map_Canada_WindDir.png", width = 2000, height = 2000, res = 300)
-ggplot() +
-  theme_bw() + #aesthetic parameters
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        axis.text.x = element_text(colour = 'black', size = 10),
-        axis.text.y = element_text(colour = 'black', size = 10)) +
-  geom_sf(data = nl.map, #inserting the shape file
-          colour = 'black',
-          fill = 'grey') +
-  coord_sf(xlim = c(-51.5, -54), ylim = c(47.25158, 48.82521)) +
-  geom_segment(lineend = "round", aes(x = -52.99618, y = 48.59913, xend = -52.65213, yend = 47.61971)) +
-  scale_x_continuous(labels = function(x) paste0(x, '\u00B0', "W")) +
-  scale_y_continuous(labels = function(x) paste0(x, '\u00B0', "N")) +
-  labs(x = 'Longitude', #naming labels
-       y = 'Latitude') +
-  geom_point(aes(x = -52.99618, y = 48.59913), colour="red", size = 2) + 
-  geom_point(aes(x = -52.65213, y = 47.61971), colour="red", size = 2) +
-  geom_point(aes(x = -52.89831, y = 48.09780), colour="red", size = 2) +
-  annotate("text", x= -52.7, y= 48.59913, label= "Flowers Point", size = 3.5) +
-  annotate("text", x= -52.33, y= 47.61971, label= "Sugarloaf Head", size = 3.5) +
-  annotate("text", x= -52.53, y= 48.09780, label= "Bay de Verde", size = 3.5) +
-  scale_bar(lon = -52.2, lat = 47.25, distance_lon = 25, distance_lat = 10, distance_legend = 15, dist_unit = "km", orientation = F) +
-  annotation_north_arrow(location = "tr", which_north = "true",
-    pad_x = unit(0.1, "in"), pad_y = unit(0.1, "in"),
-    style = ggspatial::north_arrow_nautical(
-      fill = c("grey40", "white"),
-      line_col = "grey20"))
-dev.off()
-
-```
-
-```{r tailoring data to search effort}
+```{r S1 Fig - tailoring data to search effort}
 
 #load data
-load("Data.Rda")
+load("Data_DMS.Rda")
 load("Data_NS.Rda")
 
 #selecting necessary columns and dropping NA in DMS
@@ -183,7 +148,7 @@ nrow(NS_date_21[NS_date_21$Month == '9', ]) #1
 nrow(NS_date_21[NS_date_21$Month == '10', ]) #11
 nrow(NS_date_21[NS_date_21$Month == '11', ]) #0
 
-#number of surveys per month in 2022 - BWS
+#number of surveys per month in 2022 - NS
 nrow(NS_date_22[NS_date_22$Month == '4', ]) #2
 nrow(NS_date_22[NS_date_22$Month == '5', ]) #2
 nrow(NS_date_22[NS_date_22$Month == '6', ]) #3
@@ -201,7 +166,7 @@ Dataset <- c("Daily Morning Surveys", "Daily Morning Surveys", "Daily Morning Su
 
 df_2021 =data.frame(number_of_surveys_21, month, Dataset)
 
-#Number of surveys per month 2022 - BWS & DMS
+#Number of surveys per month 2022 - NS & DMS
 number_of_surveys_22 <- c(0,23,30,22,13,28,30,10,2,2,3,3,4,4,4,0)
 month1 <- c("April", "May", "June", "July", "August", "September", "October", "November")
 month  = factor(month1, levels=c("April", "May", "June", "July", "August", "September", "October", "November"))
@@ -211,7 +176,7 @@ df_2022 =data.frame(number_of_surveys_22, month, Dataset)
 
 ```
 
-```{r search effort plot}
+```{r S1 Fig - search effort plot}
 
 #Search effort 2021
 png(filename = "figures/search_effort_2021.png", width = 2250, height = 1400, res = 300)
@@ -246,10 +211,10 @@ ggplot(df_2022, aes(x=month, y=number_of_surveys_22, fill=Dataset)) +
 dev.off()
 ```
 
-```{r tailoring data - lighting schedule}
+```{r S2 Fig - tailoring data - lighting schedule}
 
 #load data
-load("Data.Rda")
+load("Data_DMS.Rda")
 load("Data_NS.Rda")
 
 #making vector for night surveys
@@ -288,7 +253,7 @@ DMS_NS <- DMS_NS %>%
   mutate(across('Lights', str_replace, 'off', 'reduced'))
 ```
 
-```{r lighting schedule plot}
+```{r S2 Fig - lighting schedule plot}
 
 #2021 plot excluding 1 outlier
 #filter out 2022
@@ -323,6 +288,41 @@ ggplot(data = DMS_NS_2022, aes(x = Date, y = Total_LESP)) +
   scale_colour_manual(values = c("on" = "#414388FF", "reduced" = "#7ED7AFFF")) +
   theme(panel.background = element_rect(fill = 'white', colour = 'black')) +
   scale_x_date(date_labels="%b",date_breaks  ="1 month")
+dev.off()
+
+```
+
+```{r S3 Fig - onshore offshore plot}
+
+png(filename = "figures/Map_Canada_WindDir.png", width = 2000, height = 2000, res = 300)
+ggplot() +
+  theme_bw() + #aesthetic parameters
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.text.x = element_text(colour = 'black', size = 10),
+        axis.text.y = element_text(colour = 'black', size = 10)) +
+  geom_sf(data = nl.map, #inserting the shape file
+          colour = 'black',
+          fill = 'grey') +
+  coord_sf(xlim = c(-51.5, -54), ylim = c(47.25158, 48.82521)) +
+  geom_segment(lineend = "round", aes(x = -52.99618, y = 48.59913, xend = -52.65213, yend = 47.61971)) +
+  scale_x_continuous(labels = function(x) paste0(x, '\u00B0', "W")) +
+  scale_y_continuous(labels = function(x) paste0(x, '\u00B0', "N")) +
+  labs(x = 'Longitude', #naming labels
+       y = 'Latitude') +
+  geom_point(aes(x = -52.99618, y = 48.59913), colour="red", size = 2) + 
+  geom_point(aes(x = -52.65213, y = 47.61971), colour="red", size = 2) +
+  geom_point(aes(x = -52.89831, y = 48.09780), colour="red", size = 2) +
+  annotate("text", x= -52.7, y= 48.59913, label= "Flowers Point", size = 3.5) +
+  annotate("text", x= -52.33, y= 47.61971, label= "Sugarloaf Head", size = 3.5) +
+  annotate("text", x= -52.53, y= 48.09780, label= "Bay de Verde", size = 3.5) +
+  scale_bar(lon = -52.2, lat = 47.25, distance_lon = 25, distance_lat = 10, distance_legend = 15, dist_unit = "km", orientation = F) +
+  annotation_north_arrow(location = "tr", which_north = "true",
+    pad_x = unit(0.1, "in"), pad_y = unit(0.1, "in"),
+    style = ggspatial::north_arrow_nautical(
+      fill = c("grey40", "white"),
+      line_col = "grey20"))
 dev.off()
 
 ```

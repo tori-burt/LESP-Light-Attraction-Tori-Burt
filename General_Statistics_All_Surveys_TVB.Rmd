@@ -34,12 +34,24 @@ sum(birds_2022$Total_LESP) #652 birds in 2022
 mean(birds_2022$Total_LESP)
 sd(birds_2022$Total_LESP)
 
+#Average number of birds per night
+birds_night_dms <- data %>%
+  drop_na(Total_LESP, Date)
+  
+mean(birds_night_dms$Total_LESP) #4.25 birds per night - daily morning surveys
+
+birds_night_ns <- tb1 %>%
+  drop_na(Total_LESP_per_night, Date)
+  
+mean(birds_night_ns$Total_LESP) #74 birds per night - night surveys
+
+
 ```
 
 ```{r total number affected}
 
 #total number of birds - DMS
-dms_total_affected<- data %>%
+dms_total_affected <- data %>%
   drop_na(Total_LESP)
 
 sum_DMS <- sum(dms_total_affected$Total_LESP) #1335 birds stranded

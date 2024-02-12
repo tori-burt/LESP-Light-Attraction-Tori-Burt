@@ -42,11 +42,9 @@ tb1_juv_wind <- filter(tb1_juv, Wind_Speed != "NA") %>%
   mutate(OnOffShore = ifelse(Wind_Direction < 166, "onshore", ifelse(Wind_Direction > 346, "onshore", "offshore")))
 tb1_juv_wind$OnOffShore <- as.factor(tb1_juv_wind$OnOffShore)
 
-tb1_juv_wind$yDateq <- tb1_juv_wind[, "yDate"]^2
-
 #select for columns of interest
-tb2_juv <- select(tb1_juv_wind, Date, Plant_lights, Total_juv_unk_LESP, Fog_Cat, CloudCover_Cat, yDate, yDateq, Lunar, Year, Wind_Speed, OnOffShore) %>%
-  drop_na(Date, Plant_lights, Total_juv_unk_LESP, Fog_Cat, CloudCover_Cat, yDateq, Lunar, Year, Wind_Speed, OnOffShore) %>%
+tb2_juv <- select(tb1_juv_wind, Date, Plant_lights, Total_juv_unk_LESP, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year, Wind_Speed, OnOffShore) %>%
+  drop_na(Date, Plant_lights, Total_juv_unk_LESP, Fog_Cat, CloudCover_Cat, yDate, Lunar, Year, Wind_Speed, OnOffShore) %>%
   filter(CloudCover_Cat != "NA") 
 
 ```
@@ -75,7 +73,7 @@ cor(my_vars)
 plot(my_vars)
 
 #lightsmod 1 - linear - poor fit
-mod1_tb <- lm(Total_juv_unk_LESP ~ Lunar + yDateq + yDate + Plant_lights + Wind_Speed + OnOffShore + CloudCover_Cat + Year, data = tb2_juv)
+mod1_tb <- lm(Total_juv_unk_LESP ~ Lunar + I(yDate^2) + yDate + Plant_lights + Wind_Speed + OnOffShore + CloudCover_Cat + Year, data = tb2_juv)
 
 #testing vif
 vif(mod1_tb)
@@ -86,7 +84,7 @@ plot(mod1_tb, ask = FALSE)
 #assumptions are violated
 
 #lightsmod2 - poisson distribution - poor fit
-mod2_tb <- glmmTMB(Total_juv_unk_LESP ~ Lunar + yDateq + yDate + Plant_lights + Wind_Speed + OnOffShore + CloudCover_Cat + Year, data = tb2_juv, family = poisson(link = "log"))
+mod2_tb <- glmmTMB(Total_juv_unk_LESP ~ Lunar + I(yDate^2) + yDate + Plant_lights + Wind_Speed + OnOffShore + CloudCover_Cat + Year, data = tb2_juv, family = poisson(link = "log"))
 
 #testing assumptions
 assumptions <- simulateResiduals(fittedModel = mod2_tb, plot = TRUE, refit = FALSE)
@@ -100,14 +98,14 @@ testZeroInflation(assumptions)
 
 #lightsmod3 - negative binomial distribution - BEST FIT
 tb2_juv <- within(tb2_juv, Plant_lights <- relevel(Plant_lights, ref = "On"))
-mod3_tb <- glmmTMB(Total_juv_unk_LESP ~ Lunar + yDateq + yDate + Plant_lights + Wind_Speed + OnOffShore + Year + CloudCover_Cat, data = tb2_juv, family = nbinom1(link = "log"))
+mod3_tb <- glmmTMB(Total_juv_unk_LESP ~ Lunar + I(yDate^2) + yDate + Plant_lights + Wind_Speed + OnOffShore + Year + CloudCover_Cat, data = tb2_juv, family = nbinom1(link = "log"))
 
 #testing assumptions
 assumptions <- simulateResiduals(fittedModel = mod3_tb, plot = TRUE, refit = FALSE)
 
 #check each variable
 plotResiduals(form = tb2_juv$Plant_lights, simulationOutput = assumptions, asFactor = T)
-plotResiduals(form = tb2_juv$yDateq, simulationOutput = assumptions)
+plotResiduals(form = tb2_juv$yDate, simulationOutput = assumptions)
 plotResiduals(form = tb2_juv$Lunar, simulationOutput = assumptions)
 plotResiduals(form = tb2_juv$Year, simulationOutput = assumptions, asFactor = T)
 plotResiduals(form = tb2_juv$CloudCover_Cat, simulationOutput = assumptions, asFactor = T)
@@ -123,15 +121,15 @@ summary(mod3_tb)
 ae <- allEffects(mod3_tb)
 plot(ae)
 
-#lightsmod4 - negative binomial excluding outlier - poor fit
-mod4_tb <- glmmTMB(Total_juv_unk_LESP ~ Lunar + yDateq + Plant_lights + OnOffShore + Year + CloudCover_Cat, data = tb2_juv_outlier, family = nbinom1(link = "log"))
+#lightsmod4 - negative binomial excluding outlier - poor fit and model convergence problem
+mod4_tb <- glmmTMB(Total_juv_unk_LESP ~ Lunar + yDate + I(yDate^2) + Plant_lights + OnOffShore + Year + CloudCover_Cat, data = tb2_juv_outlier, family = nbinom1(link = "log"))
 
 #testing assumptions
 assumptions <- simulateResiduals(fittedModel = mod4_tb, plot = TRUE, refit = FALSE)
 
 #check each variable
 plotResiduals(form = tb2_juv_outlier$Plant_lights, simulationOutput = assumptions, asFactor = T)
-plotResiduals(form = tb2_juv_outlier$yDateq, simulationOutput = assumptions)
+plotResiduals(form = tb2_juv_outlier$yDate, simulationOutput = assumptions)
 plotResiduals(form = tb2_juv_outlier$Lunar, simulationOutput = assumptions)
 plotResiduals(form = tb2_juv_outlier$Year, simulationOutput = assumptions, asFactor = T)
 plotResiduals(form = tb2_juv_outlier$CloudCover_Cat, simulationOutput = assumptions, asFactor = T)
