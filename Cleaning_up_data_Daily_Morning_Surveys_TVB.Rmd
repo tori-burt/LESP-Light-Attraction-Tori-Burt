@@ -45,6 +45,9 @@ data$Lights <- factor(data$Lights, levels = c("on","off"))
 data$Alive_LESP <- as.numeric(data$Alive_LESP)
 data$Dead_LESP <- as.numeric(data$Dead_LESP)
 
+#select relevant columns
+data <- select(data, Location, Date, Lunar, Lights, Weather, WindSpeed, Wind.Direction, Box, Total_LESP, Alive_LESP, Dead_LESP, Year, Month, yDate)
+
 #save the data file
 save(data, file = "Data_DMS.Rda")
 
