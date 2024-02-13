@@ -226,7 +226,7 @@ R markdown code for analysis of the juvenile stranding data for Leach's Storm-Pe
 #### Night_survey_data_ad_TVB.Rmd: 
 R markdown code for analysis of the adult stranding data for Leach's Storm-Petrels collected during night surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
 
-#### CLeaning_up_data_Daily_Morning_Surveys_TVB.Rmd: 
+#### Cleaning_up_data_Daily_Morning_Surveys_TVB.Rmd: 
 R markdown code for processing raw daily morning survey data of Leach's Storm-Petrels stranded at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
 
 #### Daily_morning_Surveys_TVB.Rmd: 
