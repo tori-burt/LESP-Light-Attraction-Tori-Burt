@@ -181,6 +181,6 @@ R markdown code for compiling general statistics for Leach's Storm-Petrels colle
 
 ----
 
-#### Step 13: Carcass_counts_TVB.Rmd 
+#### Step 13: Bodypart_counts_TVB.Rmd 
 R markdown code for the analysis of the body part counts found in the Supplemental Information of the manuscript.
 
