@@ -117,7 +117,7 @@ Shape file for creating a map of Newfoundland and Labrador, Canada.
 
 ## Code/Software
 
-### Please run R markdown files in order of steps 1-12
+### Please run R markdown files in order of steps 1-13
 
 ----
 
