@@ -95,7 +95,7 @@ Raw data of the summary of age, breeding status and individual measurements of s
 - Observer: Who was present during collection / measurement of bird
 - Breeding_status: Breeding or non-breeding based on brood patch presence or absence, respectively.
 
-#### LESP_carcasses_2022_TB_2023_07_31.csv: 
+#### LESP_bodyparts_2022_TB_2023_07_31.csv: 
 Summary of Leach's Storm-Petrel body part counts performed opportunistically at the seafood processing plant in Bay de Verde, Newfoundland and Labrador, Canada from September to October of 2022.
 
 - Date: Date of body part collection
