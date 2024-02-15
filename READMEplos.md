@@ -117,66 +117,70 @@ Shape file for creating a map of Newfoundland and Labrador, Canada.
 
 ## Code/Software
 
-#### Cleaning_up_data_Night_Surveys.Rmd: 
-R markdown code for processing raw night survey data to preform analyses. 
+### Please run R markdown files in order of steps 1-12
 
 ----
 
-#### Cleaning_up_data_Night_Survey_JUV_TVB.Rmd: 
-R markdown code for processing raw night survey data for juvenile Leach's Storm-Petrels stranded at the seafood processing plant in Bay de Verde, Newfoundland and Labrador.
-
-----
-
-#### Cleaning_up_data_Night_Survey_AD_TVB.Rmd:
-R markdown code for processing raw night survey data for adult Leach's Storm-Petrels stranded at the seafood processing plant in Bay de Verde, Newfoundland and Labrador.
-
-----
-
-#### Plots.Rmd: 
-R markdown code for creating a map of Canada and the study relative the world's largest Leach's Storm-Petrel colony, a map displaying the tangent line used to determine wind direction, a graph of search effort in 2021 and 2022 during night and daily morning surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador, and a graph of the lighting schedule in 2021 and 2022 during the experiment at the seafood processing plant in Bay de Verde, Newfoundland and Labrador relative to the number of Leach's Storm-Petrel strandings.
-
-----
-
-#### Night_survey_data_juv_TVB.Rmd: 
-R markdown code for analysis of the juvenile stranding data for Leach's Storm-Petrels collected during night surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
-
-----
-
-#### Night_survey_data_ad_TVB.Rmd: 
-R markdown code for analysis of the adult stranding data for Leach's Storm-Petrels collected during night surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
-
-----
-
-#### Cleaning_up_data_Daily_Morning_Surveys_TVB.Rmd: 
+#### Step 1: Cleaning_up_data_Daily_Morning_Surveys_TVB.Rmd 
 R markdown code for processing raw daily morning survey data of Leach's Storm-Petrels stranded at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
 
 ----
 
-#### Daily_morning_Surveys_TVB.Rmd: 
+#### Step 2: Daily_morning_Surveys_TVB.Rmd 
 R markdown code for analysis of the stranding data for Leach's Storm-Petrels collected during daily morning surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
 
 ----
 
-#### Cleaning_up_data_Individual_Measurements.Rmd: 
+#### Step 3: Cleaning_up_data_Night_Surveys.Rmd 
+R markdown code for processing raw night survey data to preform analyses. 
+
+----
+
+#### Step 4: Cleaning_up_data_Night_Survey_JUV_TVB.Rmd 
+R markdown code for processing raw night survey data for juvenile Leach's Storm-Petrels stranded at the seafood processing plant in Bay de Verde, Newfoundland and Labrador.
+
+----
+
+#### Step 5: Night_survey_data_juv_TVB.Rmd 
+R markdown code for analysis of the juvenile stranding data for Leach's Storm-Petrels collected during night surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
+
+----
+
+#### Step 6: Cleaning_up_data_Night_Survey_AD_TVB.Rmd
+R markdown code for processing raw night survey data for adult Leach's Storm-Petrels stranded at the seafood processing plant in Bay de Verde, Newfoundland and Labrador.
+
+----
+
+#### Step 7: Night_survey_data_ad_TVB.Rmd 
+R markdown code for analysis of the adult stranding data for Leach's Storm-Petrels collected during night surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
+
+----
+
+#### Step 8: Cleaning_up_data_Individual_Measurements.Rmd 
 R markdown code for processing raw data of individual measurements of Leach's Storm-Petrels collected during night surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
 
 ----
 
-#### Individual_Measurements_TVB.Rmd: 
+#### Stpe 9: Individual_Measurements_TVB.Rmd 
 R markdown code for summarizing individual measurements (ex. wing length, bird weight) of Leach's Storm-Petrels collected during night surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
 
 ----
 
-#### Peak_stranding_period.Rmd: 
+#### Step 10: Peak_stranding_period.Rmd 
 R markdown code for creating a plot displaying the peak stranding period for Leach's Storm-Petrels collected during the daily monring surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
 
 ----
 
-#### General_Statistics_All_Surveys.Rmd: 
+#### Step 11: Plots.Rmd 
+R markdown code for creating a map of Canada and the study relative the world's largest Leach's Storm-Petrel colony, a map displaying the tangent line used to determine wind direction, a graph of search effort in 2021 and 2022 during night and daily morning surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador, and a graph of the lighting schedule in 2021 and 2022 during the experiment at the seafood processing plant in Bay de Verde, Newfoundland and Labrador relative to the number of Leach's Storm-Petrel strandings.
+
+----
+
+#### Step 12: General_Statistics_All_Surveys.Rmd 
 R markdown code for compiling general statistics for Leach's Storm-Petrels collected during daily morning and night surveys at the seafood processing plant in Bay de Verde, Newfoundland and Labrador
 
 ----
 
-#### Carcass_counts_TVB.Rmd: 
+#### Step 13: Carcass_counts_TVB.Rmd 
 R markdown code for the analysis of the body part counts found in the Supplemental Information of the manuscript.
 
